@@ -28,11 +28,17 @@ public class Mascota {
     @ManyToOne
     @JoinColumn(name = "cod_raza")
     private Raza raza;
+    
+    @Column(name = "color_mascota")
+    private int color;
+    
+    @Column(name = "sexo_mascota")
+    private int sexo;
+    
+    @Column(name = "fechaNacimiento_mascota")
+    private int fechaNacimiento;
 
-    @Column(name = "edad")
-    private int edad;
-
-    @Column(name = "peso")
+    @Column(name = "peso_mascota")
     private double peso;
 
     @ManyToOne
@@ -42,76 +48,95 @@ public class Mascota {
     @Column(name = "estado")
     private String estado;
 
+    
     // Getters y setters
-    public int getCod_mascota() {
-        return cod_mascota;
-    }
+    
+	public int getCod_mascota() {
+		return cod_mascota;
+	}
 
-    public void setCod_mascota(int cod_mascota) {
-        this.cod_mascota = cod_mascota;
-    }
+	public void setCod_mascota(int cod_mascota) {
+		this.cod_mascota = cod_mascota;
+	}
 
-    public String getNombre_mascota() {
-        return nombre_mascota;
-    }
+	public String getNombre_mascota() {
+		return nombre_mascota;
+	}
 
-    public void setNombre_mascota(String nombre_mascota) {
-        this.nombre_mascota = nombre_mascota;
-    }
+	public void setNombre_mascota(String nombre_mascota) {
+		this.nombre_mascota = nombre_mascota;
+	}
 
-    public String getChipIdentificacion() {
-        return chipIdentificacion;
-    }
+	public String getChipIdentificacion() {
+		return chipIdentificacion;
+	}
 
-    public void setChipIdentificacion(String chipIdentificacion) {
-        this.chipIdentificacion = chipIdentificacion;
-    }
+	public void setChipIdentificacion(String chipIdentificacion) {
+		this.chipIdentificacion = chipIdentificacion;
+	}
 
-    public Especie getEspecie() {
-        return especie;
-    }
+	public Especie getEspecie() {
+		return especie;
+	}
 
-    public void setEspecie(Especie especie) {
-        this.especie = especie;
-    }
+	public void setEspecie(Especie especie) {
+		this.especie = especie;
+	}
 
-    public Raza getRaza() {
-        return raza;
-    }
+	public Raza getRaza() {
+		return raza;
+	}
 
-    public void setRaza(Raza raza) {
-        this.raza = raza;
-    }
+	public void setRaza(Raza raza) {
+		this.raza = raza;
+	}
 
-    public int getEdad() {
-        return edad;
-    }
+	public int getColor() {
+		return color;
+	}
 
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
+	public void setColor(int color) {
+		this.color = color;
+	}
 
-    public double getPeso() {
-        return peso;
-    }
+	public int getSexo() {
+		return sexo;
+	}
 
-    public void setPeso(double peso) {
-        this.peso = peso;
-    }
+	public void setSexo(int sexo) {
+		this.sexo = sexo;
+	}
 
-    public Cliente getCliente() {
-        return cliente;
-    }
+	public int getFechaNacimiento() {
+		return fechaNacimiento;
+	}
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
+	public void setFechaNacimiento(int fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
 
-    public String getEstado() {
-        return estado;
-    }
+	public double getPeso() {
+		return peso;
+	}
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
+	public void setPeso(double peso) {
+		this.peso = peso;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+   
 }

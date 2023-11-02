@@ -31,7 +31,7 @@ public class MascotaController {
 		return "listado_mascota";
 	}
 	
-	//otra prueba
+	
 }
 
 	
