@@ -17,7 +17,7 @@ public class Raza {
 
     @ManyToOne
     @JoinColumn(name = "cod_especie")
-    private Especie especie;
+    Especie especie;
 
     @Column(name = "nombre_raza")
     private String nombre_raza;

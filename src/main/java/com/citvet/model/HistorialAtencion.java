@@ -1,5 +1,7 @@
 package com.citvet.model;
 
+import java.security.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,13 +19,13 @@ public class HistorialAtencion {
 
     @ManyToOne
     @JoinColumn(name = "cod_cita")
-    private Cita cita;
+    Cita cita;
 
-    @Column(name = "detalle_atencion", columnDefinition = "TEXT")
+    @Column(name = "detalle_atencion")
     private String detalle_atencion;
 
     @Column(name = "fecha_hora_atencion")
-    private java.sql.Timestamp fecha_hora_atencion;
+    private Timestamp fecha_hora_atencion;
 
     // Getters y setters
     public int getCod_atencion() {
@@ -50,11 +52,11 @@ public class HistorialAtencion {
         this.detalle_atencion = detalle_atencion;
     }
 
-    public java.sql.Timestamp getFecha_hora_atencion() {
+    public Timestamp getFecha_hora_atencion() {
         return fecha_hora_atencion;
     }
 
-    public void setFecha_hora_atencion(java.sql.Timestamp fecha_hora_atencion) {
+    public void setFecha_hora_atencion(Timestamp fecha_hora_atencion) {
         this.fecha_hora_atencion = fecha_hora_atencion;
     }
 }

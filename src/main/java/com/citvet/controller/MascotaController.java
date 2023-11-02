@@ -25,10 +25,11 @@ public class MascotaController {
 	@Autowired
 	private IRazaRepository raza;
 	
+
 	@GetMapping("/listar_mascotas")
 	public String listadoMascota(Model model) {
 		model.addAttribute("lstMascotas", masc.findAll());
-		return "listado_mascota";
+		return "listado-mascota";
 	}
 	
 	

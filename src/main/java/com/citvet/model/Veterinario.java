@@ -26,7 +26,7 @@ public class Veterinario {
 
     @ManyToOne
     @JoinColumn(name = "cod_distrito")
-    private Distrito distrito;
+    Distrito distrito;
 
     @Column(name = "direccion")
     private String direccion;

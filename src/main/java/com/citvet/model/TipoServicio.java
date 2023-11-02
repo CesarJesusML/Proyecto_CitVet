@@ -10,8 +10,8 @@ import javax.persistence.Table;
 public class TipoServicio {
 
     @Id
-    @Column(name = "cod_tipoServicio")
-    private int cod_tipoServicio;
+    @Column(name = "cod_tipo_servicio")
+    private int cod_tipo_servicio;
 
     @Column(name = "descripcion")
     private String descripcion;
@@ -19,28 +19,32 @@ public class TipoServicio {
     @Column(name = "condicion")
     private char condicion;
 
+    
     // Getters y setters
-    public int getCod_tipoServicio() {
-        return cod_tipoServicio;
-    }
+    
+	public int getCod_tipo_servicio() {
+		return cod_tipo_servicio;
+	}
 
-    public void setCod_tipoServicio(int cod_tipoServicio) {
-        this.cod_tipoServicio = cod_tipoServicio;
-    }
+	public void setCod_tipo_servicio(int cod_tipo_servicio) {
+		this.cod_tipo_servicio = cod_tipo_servicio;
+	}
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+	public String getDescripcion() {
+		return descripcion;
+	}
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 
-    public char getCondicion() {
-        return condicion;
-    }
+	public char getCondicion() {
+		return condicion;
+	}
 
-    public void setCondicion(char condicion) {
-        this.condicion = condicion;
-    }
+	public void setCondicion(char condicion) {
+		this.condicion = condicion;
+	}
+    
+    
 }

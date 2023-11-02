@@ -1,5 +1,7 @@
 package com.citvet.model;
 
+import java.sql.Time;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -18,87 +20,89 @@ public class Servicio {
     @Column(name = "nombre_servicio")
     private String nombre_servicio;
 
-    @Column(name = "descripcion", columnDefinition = "TEXT")
+    @Column(name = "descripcion")
     private String descripcion;
 
     @ManyToOne
-    @JoinColumn(name = "cod_tipoServicio")
-    private TipoServicio tipoServicio;
+    @JoinColumn(name = "cod_tipo_servicio")
+    TipoServicio tipo_servicio;
 
     @Column(name = "precio")
     private double precio;
 
-    @Column(name = "duracionEstimada")
-    private java.sql.Time duracionEstimada;
+    @Column(name = "duracion_estimada")
+    private Time duracion_estimada;
 
-    @Column(name = "materialesNecesarios", columnDefinition = "TEXT")
-    private String materialesNecesarios;
+    @Column(name = "materiales_necesarios")
+    private String materiales_necesarios;
 
     @Column(name = "estado")
     private String estado;
-
+    
     // Getters y setters
-    public int getCod_servicio() {
-        return cod_servicio;
-    }
 
-    public void setCod_servicio(int cod_servicio) {
-        this.cod_servicio = cod_servicio;
-    }
+	public int getCod_servicio() {
+		return cod_servicio;
+	}
 
-    public String getNombre_servicio() {
-        return nombre_servicio;
-    }
+	public void setCod_servicio(int cod_servicio) {
+		this.cod_servicio = cod_servicio;
+	}
 
-    public void setNombre_servicio(String nombre_servicio) {
-        this.nombre_servicio = nombre_servicio;
-    }
+	public String getNombre_servicio() {
+		return nombre_servicio;
+	}
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+	public void setNombre_servicio(String nombre_servicio) {
+		this.nombre_servicio = nombre_servicio;
+	}
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+	public String getDescripcion() {
+		return descripcion;
+	}
 
-    public TipoServicio getTipoServicio() {
-        return tipoServicio;
-    }
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 
-    public void setTipoServicio(TipoServicio tipoServicio) {
-        this.tipoServicio = tipoServicio;
-    }
+	public TipoServicio getTipo_servicio() {
+		return tipo_servicio;
+	}
 
-    public double getPrecio() {
-        return precio;
-    }
+	public void setTipo_servicio(TipoServicio tipo_servicio) {
+		this.tipo_servicio = tipo_servicio;
+	}
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
+	public double getPrecio() {
+		return precio;
+	}
 
-    public java.sql.Time getDuracionEstimada() {
-        return duracionEstimada;
-    }
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
 
-    public void setDuracionEstimada(java.sql.Time duracionEstimada) {
-        this.duracionEstimada = duracionEstimada;
-    }
+	public Time getDuracion_estimada() {
+		return duracion_estimada;
+	}
 
-    public String getMaterialesNecesarios() {
-        return materialesNecesarios;
-    }
+	public void setDuracion_estimada(Time duracion_estimada) {
+		this.duracion_estimada = duracion_estimada;
+	}
 
-    public void setMaterialesNecesarios(String materialesNecesarios) {
-        this.materialesNecesarios = materialesNecesarios;
-    }
+	public String getMateriales_necesarios() {
+		return materiales_necesarios;
+	}
 
-    public String getEstado() {
-        return estado;
-    }
+	public void setMateriales_necesarios(String materiales_necesarios) {
+		this.materiales_necesarios = materiales_necesarios;
+	}
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	
 }

@@ -1,5 +1,7 @@
 package com.citvet.model;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,56 +19,58 @@ public class Pago {
 
     @ManyToOne
     @JoinColumn(name = "cod_cita")
-    private Cita cita;
+    Cita cita;
 
-    @Column(name = "montoTotal")
-    private double montoTotal;
+    @Column(name = "monto_total")
+    private double monto_total;
 
     @Column(name = "fecha_hora_pago")
-    private java.sql.Timestamp fecha_hora_pago;
-
-    @ManyToOne
-    @JoinColumn(name = "cod_tipoComprobante")
-    private TipoComprobante tipoComprobante;
+    private Date fecha_hora_pago;
+    
+    @Column(name = "tipo_comprobante")
+    private String tipo_comprobante;
 
     // Getters y setters
-    public int getCod_pago() {
-        return cod_pago;
-    }
+    
+	public int getCod_pago() {
+		return cod_pago;
+	}
 
-    public void setCod_pago(int cod_pago) {
-        this.cod_pago = cod_pago;
-    }
+	public void setCod_pago(int cod_pago) {
+		this.cod_pago = cod_pago;
+	}
 
-    public Cita getCita() {
-        return cita;
-    }
+	public Cita getCita() {
+		return cita;
+	}
 
-    public void setCita(Cita cita) {
-        this.cita = cita;
-    }
+	public void setCita(Cita cita) {
+		this.cita = cita;
+	}
 
-    public double getMontoTotal() {
-        return montoTotal;
-    }
+	public double getMonto_total() {
+		return monto_total;
+	}
 
-    public void setMontoTotal(double montoTotal) {
-        this.montoTotal = montoTotal;
-    }
+	public void setMonto_total(double monto_total) {
+		this.monto_total = monto_total;
+	}
 
-    public java.sql.Timestamp getFecha_hora_pago() {
-        return fecha_hora_pago;
-    }
+	public Date getFecha_hora_pago() {
+		return fecha_hora_pago;
+	}
 
-    public void setFecha_hora_pago(java.sql.Timestamp fecha_hora_pago) {
-        this.fecha_hora_pago = fecha_hora_pago;
-    }
+	public void setFecha_hora_pago(Date fecha_hora_pago) {
+		this.fecha_hora_pago = fecha_hora_pago;
+	}
 
-    public TipoComprobante getTipoComprobante() {
-        return tipoComprobante;
-    }
+	public String getTipo_comprobante() {
+		return tipo_comprobante;
+	}
 
-    public void setTipoComprobante(TipoComprobante tipoComprobante) {
-        this.tipoComprobante = tipoComprobante;
-    }
+	public void setTipo_comprobante(String tipo_comprobante) {
+		this.tipo_comprobante = tipo_comprobante;
+	}
+
+      
 }

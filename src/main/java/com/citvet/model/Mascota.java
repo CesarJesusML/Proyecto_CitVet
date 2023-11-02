@@ -1,5 +1,7 @@
 package com.citvet.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -18,39 +20,41 @@ public class Mascota {
     @Column(name = "nombre_mascota")
     private String nombre_mascota;
 
-    @Column(name = "chipIdentificacion")
-    private String chipIdentificacion;
+    @Column(name = "chip_identificacion")
+    private String chip_identificacion;
 
     @ManyToOne
     @JoinColumn(name = "cod_especie")
-    private Especie especie;
+    Especie especie;
 
     @ManyToOne
     @JoinColumn(name = "cod_raza")
-    private Raza raza;
+    Raza raza;
     
     @Column(name = "color_mascota")
-    private int color;
+    private String color;
     
     @Column(name = "sexo_mascota")
-    private int sexo;
+    private String sexo;
     
-    @Column(name = "fechaNacimiento_mascota")
-    private int fechaNacimiento;
+    @Column(name = "fecha_nacimiento_mascota")
+    private Date fecha_nacimiento;
 
     @Column(name = "peso_mascota")
     private double peso;
 
     @ManyToOne
     @JoinColumn(name = "cod_cliente")
-    private Cliente cliente;
+    Cliente cliente;
 
     @Column(name = "estado")
     private String estado;
-
+    
+    @Column(name = "foto_mascota")
+    private String foto_mascota;
     
     // Getters y setters
-    
+
 	public int getCod_mascota() {
 		return cod_mascota;
 	}
@@ -67,12 +71,12 @@ public class Mascota {
 		this.nombre_mascota = nombre_mascota;
 	}
 
-	public String getChipIdentificacion() {
-		return chipIdentificacion;
+	public String getChip_identificacion() {
+		return chip_identificacion;
 	}
 
-	public void setChipIdentificacion(String chipIdentificacion) {
-		this.chipIdentificacion = chipIdentificacion;
+	public void setChip_identificacion(String chip_identificacion) {
+		this.chip_identificacion = chip_identificacion;
 	}
 
 	public Especie getEspecie() {
@@ -91,28 +95,28 @@ public class Mascota {
 		this.raza = raza;
 	}
 
-	public int getColor() {
+	public String getColor() {
 		return color;
 	}
 
-	public void setColor(int color) {
+	public void setColor(String color) {
 		this.color = color;
 	}
 
-	public int getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(int sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 
-	public int getFechaNacimiento() {
-		return fechaNacimiento;
+	public Date getFecha_nacimiento() {
+		return fecha_nacimiento;
 	}
 
-	public void setFechaNacimiento(int fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
+	public void setFecha_nacimiento(Date fecha_nacimiento) {
+		this.fecha_nacimiento = fecha_nacimiento;
 	}
 
 	public double getPeso() {
@@ -138,5 +142,13 @@ public class Mascota {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-   
+
+	public String getFoto_mascota() {
+		return foto_mascota;
+	}
+
+	public void setFoto_mascota(String foto_mascota) {
+		this.foto_mascota = foto_mascota;
+	}
+     
 }
