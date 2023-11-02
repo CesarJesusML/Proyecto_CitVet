@@ -22,10 +22,8 @@
 					<th scope="col" class="text-center">Codigo</th>
 					<th scope="col" class="text-center">Foto</th>
 					<th scope="col">Nombre</th>
-    				<th scope="col">Chip</th>
     				<th scope="col">Especie</th>
     				<th scope="col">Raza</th>
-    				<th scope="col">Color</th>
     				<th scope="col">Sexo</th>
     				<th scope="col" class="text-center">Fecha de Nacimiento</th>
     				<th scope="col">Peso</th>
@@ -41,14 +39,12 @@
 					    <img th:src="@{'/imagenes/mascotas/' + ${m.foto_mascota}}" alt="Foto" class="img-thumbnail" style="width: 70px;" />
 					</td>
 			        <td th:text="${m.nombre_mascota}"></td>
-			        <td th:text="${m.chip_identificacion}"></td>
 			        <td th:text="${m.especie.nombre_especie}"></td>
 			        <td th:text="${m.raza.nombre_raza}"></td>
-			        <td th:text="${m.color}"></td>
 			        <td th:text="${m.sexo}"></td>
 			        <td th:text="${#dates.format(m.fecha_nacimiento, 'dd-MM-yyyy')}" class="text-center"></td>
 			        <td th:text="${m.peso}"></td>
-			        <td th:text="${m.cliente.nombres}"></td>
+			        <td th:text="${m.cliente.nombres + ' ' + m.cliente.apellidos}"></td>
 			        <td>
 						<a class="btn btn-warning" role="button">Editar</a>
     				</td>
