@@ -30,6 +30,8 @@ public class MascotaController {
 		model.addAttribute("lstMascotas", masc.findAll());
 		return "listado_mascota";
 	}
+	
+	//otra prueba
 }
 
 	
