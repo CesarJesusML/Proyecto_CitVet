@@ -1,0 +1,81 @@
+<div th:fragment="content">
+<!-- Content Header (Page header) -->
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Listado de Mascotas</h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/inicio"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="javascript:">Mascotas</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:">Listado</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.content-header -->
+
+<!-- Hoverable rows start -->
+
+<div class="main-body">
+    <div class="page-wrapper">
+        <div class="row">
+
+            <!-- [ striped-table ] start -->
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-block table-border-style">                 
+                        <!-- table hover -->
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+					    			<tr>
+										<th scope="col" class="text-center">Codigo</th>
+										<th scope="col" class="text-center">Foto</th>
+										<th scope="col">Nombre</th>
+					    				<th scope="col">Especie</th>
+					    				<th scope="col">Raza</th>
+					    				<th scope="col">Sexo</th>
+					    				<th scope="col" class="text-center">Fecha de Nacimiento</th>
+					    				<th scope="col">Peso</th>
+					    				<th scope="col">Dueño</th>
+					    				<th></th>
+					    				<th></th>
+					    			</tr>
+					    		</thead>
+					    		<tbody>
+								    <tr th:each="m : ${lstMascotas}">
+								        <td th:text="${m.cod_mascota}" class="text-center"></td>
+								        <td>
+										    <img th:src="@{'/imagenes/mascotas/' + ${m.foto_mascota}}" alt="Foto" class="img-thumbnail" style="width: 70px;" />
+										</td>
+								        <td th:text="${m.nombre_mascota}"></td>
+								        <td th:text="${m.especie.nombre_especie}"></td>
+								        <td th:text="${m.raza.nombre_raza}"></td>
+								        <td th:text="${m.sexo}"></td>
+								        <td th:text="${#dates.format(m.fecha_nacimiento, 'dd-MM-yyyy')}" class="text-center"></td>
+								        <td th:text="${m.peso}"></td>
+								        <td th:text="${m.cliente.nombres + ' ' + m.cliente.apellidos}"></td>
+								        <td>
+											<a class="btn btn-warning text-white" role="button">Editar</a>
+					    				</td>
+					    				<td>
+											<button type="button" class="btn btn-danger deletebtn">Eliminar</button>
+					    				</td>
+								    </tr>
+								</tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>           
+            <!-- [ striped-table ] end -->
+
+        </div>       
+    </div>
+</div>
+<!-- Hoverable rows end -->
+</div>

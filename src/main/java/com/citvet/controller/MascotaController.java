@@ -26,11 +26,14 @@ public class MascotaController {
 	private IRazaRepository raza;
 	
 
-	@GetMapping("/listar_mascotas")
+	@GetMapping("/mascota-listado")
 	public String listadoMascota(Model model) {
+		model.addAttribute("content", "mascota-listado");
 		model.addAttribute("lstMascotas", masc.findAll());
-		return "listado-mascota";
+		return "layout";
 	}
+	
+	
 	
 	
 }
