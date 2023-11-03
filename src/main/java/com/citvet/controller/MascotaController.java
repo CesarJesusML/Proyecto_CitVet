@@ -57,18 +57,19 @@ public class MascotaController {
 	@PostMapping("/grabar")
 	public String grabarPag(@ModelAttribute Mascota mascota, @RequestParam("imagen") MultipartFile imagen, RedirectAttributes attribute) {
 	    try {
-	        if (imagen != null && !imagen.isEmpty()) {
-	            String extension = imagen.getOriginalFilename().substring(imagen.getOriginalFilename().lastIndexOf("."));
-	            String nombreImagen = mascota.getCod_mascota() + "_" + mascota.getNombre_mascota() + extension;
-	            Path directorioImagenes = Paths.get("src//main//resources//static//imagenes//mascotas");
-	            String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
-	            byte[] bytesImg = imagen.getBytes();
-	            Path rutaCompleta = Paths.get(rutaAbsoluta + "//" + nombreImagen);
-	            Files.write(rutaCompleta, bytesImg);
-	            mascota.setFoto_mascota(nombreImagen);
-	        }
-
-	        if (mascrepo.save(mascota) != null) {
+	        Mascota savedMascota = mascrepo.save(mascota);
+	        if (savedMascota != null) {
+	            if (imagen != null && !imagen.isEmpty()) {
+	                String extension = imagen.getOriginalFilename().substring(imagen.getOriginalFilename().lastIndexOf("."));
+	                String nombreImagen = savedMascota.getCod_mascota() + "_" + savedMascota.getNombre_mascota() + extension;
+	                Path directorioImagenes = Paths.get("src//main//resources//static//imagenes//mascotas");
+	                String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
+	                byte[] bytesImg = imagen.getBytes();
+	                Path rutaCompleta = Paths.get(rutaAbsoluta + "//" + nombreImagen);
+	                Files.write(rutaCompleta, bytesImg);
+	                savedMascota.setFoto_mascota(nombreImagen);
+	                mascrepo.save(savedMascota);
+	            }
 	            attribute.addFlashAttribute("sucess", "Mascota registrada con éxito!");
 	        } else {
 	            attribute.addFlashAttribute("unsucess", "Error al registrar mascota!");
@@ -78,6 +79,8 @@ public class MascotaController {
 	    }
 	    return "redirect:/mascota-nueva";
 	}
+
+
 
 	
 
