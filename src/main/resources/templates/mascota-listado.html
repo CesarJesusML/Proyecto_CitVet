@@ -48,21 +48,21 @@
 					    		</thead>
 					    		<tbody>
 								    <tr th:each="m : ${lstMascotas}">
-								        <td th:text="${m.cod_mascota}" class="text-center"></td>
+								        <td th:text="${m.cod_mascota}" class="text-center align-middle"></td>
 								        <td>
 										    <img th:src="@{'/imagenes/mascotas/' + ${m.foto_mascota}}" alt="Foto" class="img-thumbnail" style="width: 70px;" />
 										</td>
-								        <td th:text="${m.nombre_mascota}"></td>
-								        <td th:text="${m.especie.nombre_especie}"></td>
-								        <td th:text="${m.raza.nombre_raza}"></td>
-								        <td th:text="${m.sexo}"></td>
-								        <td th:text="${#dates.format(m.fecha_nacimiento, 'dd-MM-yyyy')}" class="text-center"></td>
-								        <td th:text="${m.peso}"></td>
-								        <td th:text="${m.cliente.nombres + ' ' + m.cliente.apellidos}"></td>
-								        <td>
+								        <td th:text="${m.nombre_mascota}" class="align-middle"></td>
+								        <td th:text="${m.especie.nombre_especie}" class="align-middle"></td>
+								        <td th:text="${m.raza.nombre_raza}" class="align-middle"></td>
+								        <td th:text="${m.sexo}" class="align-middle"></td>
+								        <td th:text="${#dates.format(m.fecha_nacimiento, 'dd-MM-yyyy')}" class="text-center align-middle"></td>
+								        <td th:text="${m.peso}" class="align-middle"></td>
+								        <td th:text="${m.cliente.nombres + ' ' + m.cliente.apellidos}" class="align-middle"></td>
+								        <td class="align-middle">
 											<a class="btn btn-warning text-white" role="button">Editar</a>
 					    				</td>
-					    				<td>
+					    				<td class="align-middle"> 
 											<button type="button" class="btn btn-danger deletebtn">Eliminar</button>
 					    				</td>
 								    </tr>
@@ -77,5 +77,6 @@
         </div>       
     </div>
 </div>
+
 <!-- Hoverable rows end -->
 </div>
