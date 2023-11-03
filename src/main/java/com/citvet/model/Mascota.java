@@ -4,16 +4,21 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "mascotas")
 public class Mascota {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_mascota")
     private int cod_mascota;
 
@@ -38,6 +43,7 @@ public class Mascota {
     private String sexo;
     
     @Column(name = "fecha_nacimiento_mascota")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fecha_nacimiento;
 
     @Column(name = "peso_mascota")

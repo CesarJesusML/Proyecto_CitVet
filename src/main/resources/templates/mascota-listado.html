@@ -69,6 +69,7 @@
 								</tbody>
                             </table>
                         </div>
+                                              	
                     </div>
                 </div>
             </div>           
@@ -77,6 +78,46 @@
         </div>       
     </div>
 </div>
+
+
+<!-- Inicio del Modal -->
+<div class="modal fade" id="eliminarModal" tabindex="-1" aria-labelledby="eliminarModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editarModalLabel">Eliminar mascota</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      	<form th:action="@{/eliminar}" method="post">
+	      <div class="modal-body">
+			 <input type="hidden" name="codigo" id="codigo">
+			 </span>&nbsp;<span id="nombreMascota"></span>
+	      </div>
+	      <div class="modal-footer">
+	          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cancelar </button>
+	          <button type="submit" name="deletedata" class="btn btn-primary">Sí, eliminar</button>
+	      </div>
+	     </form>
+    </div>
+	</div>
+</div>
+<!-- Fin del Modal -->
+
+
+<script>
+	$(document).ready(function(){
+		$('.deletebtn').on('click',function(){
+			$('#eliminarModal').modal('show');
+			$tr = $(this).closest('tr');
+			var data = $tr.children("td").map(function(){
+				return $(this).text();
+			}).get();
+			console.log(data);
+			$('#codigo').val(data[0]);
+			$('#nombreMascota').text("¿Está seguro de eliminar las mascota: "+ data[2]+"?");
+		})
+	});
+</script>
 
 <!-- Hoverable rows end -->
 </div>
