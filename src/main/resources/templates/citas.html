@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+   
+   <style>
+        .form-columns {
+            display: flex;
+            justify-content: center;
+        }
+        .form-columns > div {
+            flex: 1;
+            padding: 10px;
+         
+            margin-left: 1px; /* Agregar margen izquierdo para mover el contenido hacia la derecha */
+        }
+        .form-columns label {
+            display: block; /* Para que cada label esté en una línea separada */
+            margin-bottom: 5px; /* Espaciado inferior entre label e input */
+        }
+          .form-columns label, .form-columns input {
+            margin-left: 200px; /* Agregar margen izquierdo para mover el contenido hacia la derecha */
+        }
+    </style>
+
+</head>
+
+<body>
+<div class="container mt-3">
+ <h1>Formulario de Registro</h1>
+    <form  method="post" class="form-control">
+		<div class="form-columns" >
+		<div>
+        <!-- Campos de la tabla 'cita' -->
+        <label for="cod_cliente">Código de Cliente:</label>
+        <input type="text" name="cod_cliente" required><br>
+
+        <label for="cod_mascota">Código de Mascota:</label>
+        <input type="text" name="cod_mascota" required><br>
+
+        <label for="fecha_cita">Fecha de la Cita:</label>
+        <input type="date" name="fecha_cita" required><br>
+
+        <label for="hora_cita">Hora de la Cita:</label>
+        <input type="time" name="hora_cita" required><br>
+
+        <label for="cod_servicio">Código de Servicio:</label>
+        <input type="text" name="cod_servicio" required><br>
+
+        <label for="cod_veterinario">Código de Veterinario:</label>
+        <input type="text" name="cod_veterinario" required><br>
+
+        <label for="duracion_estimada">Duración Estimada:</label>
+        <input type="time" name="duracion_estimada" required><br>
+
+        <label for="estado_cita">Estado de la Cita:</label>
+        <input type="text" name="estado_cita" required><br>
+		</div>
+		
+		<div>
+        <!-- Campos de la tabla 'pagos' -->
+        <label for="monto_total">Monto Total:</label>
+        <input type="text" name="monto_total" required><br>
+
+        <label for="fecha_hora_pago">Fecha y Hora del Pago:</label>
+        <input type="datetime-local" name="fecha_hora_pago" required><br>
+
+        <label for="tipo_comprobante">Tipo de Comprobante:</label>
+        <input type="text" name="tipo_comprobante" required><br>
+
+     
+        </div>
+        
+		</div>
+		<div style="text-align: center;">
+			 <input type="submit" value="Registrar">
+		</div>
+		  
+		
+    </form>
+</div>
+</body>
+
+</html>
