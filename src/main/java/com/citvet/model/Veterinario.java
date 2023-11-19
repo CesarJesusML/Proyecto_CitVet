@@ -13,7 +13,7 @@ public class Veterinario {
 
     @Id
     @Column(name = "cod_veterinario")
-    private int cod_veterinario;
+    private int codVeterinario;
 
     @Column(name = "nombres_veterinario")
     private String nombres_veterinario;
@@ -38,19 +38,21 @@ public class Veterinario {
     private String estado;
 
     // Getters y setters
-    public int getCod_veterinario() {
-        return cod_veterinario;
-    }
 
-    public void setCod_veterinario(int cod_veterinario) {
-        this.cod_veterinario = cod_veterinario;
-    }
 
     public String getNombres_veterinario() {
         return nombres_veterinario;
     }
 
-    public void setNombres_veterinario(String nombres_veterinario) {
+    public int getCodVeterinario() {
+		return codVeterinario;
+	}
+
+	public void setCodVeterinario(int codVeterinario) {
+		this.codVeterinario = codVeterinario;
+	}
+
+	public void setNombres_veterinario(String nombres_veterinario) {
         this.nombres_veterinario = nombres_veterinario;
     }
 

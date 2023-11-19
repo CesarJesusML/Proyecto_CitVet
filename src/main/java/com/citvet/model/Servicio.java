@@ -15,7 +15,7 @@ public class Servicio {
 
     @Id
     @Column(name = "cod_servicio")
-    private int cod_servicio;
+    private int codServicio;
 
     @Column(name = "nombre_servicio")
     private String nombre_servicio;
@@ -41,16 +41,18 @@ public class Servicio {
     
     // Getters y setters
 
-	public int getCod_servicio() {
-		return cod_servicio;
-	}
 
-	public void setCod_servicio(int cod_servicio) {
-		this.cod_servicio = cod_servicio;
-	}
 
 	public String getNombre_servicio() {
 		return nombre_servicio;
+	}
+
+	public int getCodServicio() {
+		return codServicio;
+	}
+
+	public void setCodServicio(int codServicio) {
+		this.codServicio = codServicio;
 	}
 
 	public void setNombre_servicio(String nombre_servicio) {

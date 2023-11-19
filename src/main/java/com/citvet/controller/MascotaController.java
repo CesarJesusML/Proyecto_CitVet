@@ -61,7 +61,7 @@ public class MascotaController {
 	        if (savedMascota != null) {
 	            if (imagen != null && !imagen.isEmpty()) {
 	                String extension = imagen.getOriginalFilename().substring(imagen.getOriginalFilename().lastIndexOf("."));
-	                String nombreImagen = savedMascota.getCod_mascota() + "_" + savedMascota.getNombre_mascota() + extension;
+	                String nombreImagen = savedMascota.getCodMascota() + "_" + savedMascota.getNombre_mascota() + extension;
 	                Path directorioImagenes = Paths.get("src//main//resources//static//imagenes//mascotas");
 	                String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
 	                byte[] bytesImg = imagen.getBytes();

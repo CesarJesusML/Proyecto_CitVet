@@ -1,6 +1,6 @@
 package com.citvet.model;
 
-import java.sql.Time;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,13 +10,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "citas")
 public class Cita {
 
     @Id
     @Column(name = "cod_cita")
-    private int cod_cita;
+    private int codCita;
 
     @ManyToOne
     @JoinColumn(name = "cod_cliente")
@@ -26,11 +28,13 @@ public class Cita {
     @JoinColumn(name = "cod_mascota")
     Mascota mascota;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "fecha_cita")
     private Date fecha_cita;
 
+    @DateTimeFormat(pattern = "HH:mm")
     @Column(name = "hora_cita")
-    private Time hora_cita;
+    private String hora_cita;
 
     @ManyToOne
     @JoinColumn(name = "cod_servicio")
@@ -38,10 +42,11 @@ public class Cita {
 
     @ManyToOne
     @JoinColumn(name = "cod_veterinario")
-    Veterinario veterinario;
+    Veterinario vet;
 
+    @DateTimeFormat(pattern = "HH:mm")
     @Column(name = "duracion_estimada")
-    private Time duracion_estimada;
+    private String duracion_estimada;
 
     @Column(name = "estado_cita")
     private String estado_cita;
@@ -49,16 +54,33 @@ public class Cita {
     
     // Getters y setters
     
-	public int getCod_cita() {
-		return cod_cita;
-	}
-
-	public void setCod_cita(int cod_cita) {
-		this.cod_cita = cod_cita;
-	}
 
 	public Cliente getCliente() {
 		return cliente;
+	}
+
+	public String getHora_cita() {
+		return hora_cita;
+	}
+
+	public void setHora_cita(String hora_cita) {
+		this.hora_cita = hora_cita;
+	}
+
+	public String getDuracion_estimada() {
+		return duracion_estimada;
+	}
+
+	public void setDuracion_estimada(String duracion_estimada) {
+		this.duracion_estimada = duracion_estimada;
+	}
+
+	public int getCodCita() {
+		return codCita;
+	}
+
+	public void setCodCita(int codCita) {
+		this.codCita = codCita;
 	}
 
 	public void setCliente(Cliente cliente) {
@@ -81,13 +103,7 @@ public class Cita {
 		this.fecha_cita = fecha_cita;
 	}
 
-	public Time getHora_cita() {
-		return hora_cita;
-	}
 
-	public void setHora_cita(Time hora_cita) {
-		this.hora_cita = hora_cita;
-	}
 
 	public Servicio getServicio() {
 		return servicio;
@@ -97,21 +113,17 @@ public class Cita {
 		this.servicio = servicio;
 	}
 
-	public Veterinario getVeterinario() {
-		return veterinario;
+
+
+	public Veterinario getVet() {
+		return vet;
 	}
 
-	public void setVeterinario(Veterinario veterinario) {
-		this.veterinario = veterinario;
+	public void setVet(Veterinario vet) {
+		this.vet = vet;
 	}
 
-	public Time getDuracion_estimada() {
-		return duracion_estimada;
-	}
 
-	public void setDuracion_estimada(Time duracion_estimada) {
-		this.duracion_estimada = duracion_estimada;
-	}
 
 	public String getEstado_cita() {
 		return estado_cita;

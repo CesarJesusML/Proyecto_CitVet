@@ -1,90 +1,247 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="https://www.thymeleaf.org">
 
-<head>
+<head th:replace="layout  :: head">
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
-   
-   <style>
-        .form-columns {
-            display: flex;
-            justify-content: center;
-        }
-        .form-columns > div {
-            flex: 1;
-            padding: 10px;
-         
-            margin-left: 1px; /* Agregar margen izquierdo para mover el contenido hacia la derecha */
-        }
-        .form-columns label {
-            display: block; /* Para que cada label esté en una línea separada */
-            margin-bottom: 5px; /* Espaciado inferior entre label e input */
-        }
-          .form-columns label, .form-columns input {
-            margin-left: 200px; /* Agregar margen izquierdo para mover el contenido hacia la derecha */
-        }
-    </style>
+	
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-</head>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+	<script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+	<script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
+	
+	
+
+	
+
+
+	<style>
+	
+	
+		#grupo1 div label ,
+		 #grupo1 div input,
+		 #grupo1 div select{
+			margin-left: 150px;
+		}
+		#grupo1 div label{
+			width: 50px;
+		}
+		
+	
+		#grupo1 div select{
+			width: 205px;
+		}
+		#grupo1 div input{
+			width: 205px;
+		}
+		
+
+		#grupo2 div label, #grupo2 div input {
+			margin-left: 70px;
+			
+		}
+		#grupo2 div input{
+			width: 150px;
+			height: 40px;
+			
+			
+		}
+
+		#botones {
+			text-align: center;
+			margin-top: 10px;
+		}
+		
+.input-date::placeholder {
+    color: rgb(255, 255, 255); /* Cambia el color al que desees */
+}
+
+
+
+
+.input-date
+{
+width: 300px;
+padding: 15px;
+color: #fff;
+font-size: 18px; 
+background-color: rgb(0, 117, 234); 
+ 
+
+}	 
+
+.input-date::-webkit-calendar-picker-indicator 
+{
+padding: 5px;
+cursor: pointer; 
+background-color: #fff;
+} 
+
+
+ 
+
+	</style> 
+	 	
+
+</head> 
 
 <body>
-<div class="container mt-3">
- <h1>Formulario de Registro</h1>
-    <form  method="post" class="form-control">
-		<div class="form-columns" >
-		<div>
-        <!-- Campos de la tabla 'cita' -->
-        <label for="cod_cliente">Código de Cliente:</label>
-        <input type="text" name="cod_cliente" required><br>
+	
+	
 
-        <label for="cod_mascota">Código de Mascota:</label>
-        <input type="text" name="cod_mascota" required><br>
-
-        <label for="fecha_cita">Fecha de la Cita:</label>
-        <input type="date" name="fecha_cita" required><br>
-
-        <label for="hora_cita">Hora de la Cita:</label>
-        <input type="time" name="hora_cita" required><br>
-
-        <label for="cod_servicio">Código de Servicio:</label>
-        <input type="text" name="cod_servicio" required><br>
-
-        <label for="cod_veterinario">Código de Veterinario:</label>
-        <input type="text" name="cod_veterinario" required><br>
-
-        <label for="duracion_estimada">Duración Estimada:</label>
-        <input type="time" name="duracion_estimada" required><br>
-
-        <label for="estado_cita">Estado de la Cita:</label>
-        <input type="text" name="estado_cita" required><br>
-		</div>
+	
+	
+	
+		<nav th:replace="layout :: nav">
+	</nav>
+	
+	
 		
-		<div>
-        <!-- Campos de la tabla 'pagos' -->
-        <label for="monto_total">Monto Total:</label>
-        <input type="text" name="monto_total" required><br>
+			<header th:replace="layout :: header">
+		
+	</header>
 
-        <label for="fecha_hora_pago">Fecha y Hora del Pago:</label>
-        <input type="datetime-local" name="fecha_hora_pago" required><br>
-
-        <label for="tipo_comprobante">Tipo de Comprobante:</label>
-        <input type="text" name="tipo_comprobante" required><br>
-
-     
+	
+	
+	<div class="pcoded-main-container" > 
+		
+		<div class="page-header" style="margin-left: 30px;">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Listado de Mascotas</h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/inicio"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="javascript:">Mascotas</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:">Citas</a></li>
+                </ul>
+            </div>
         </div>
-        
-		</div>
-		<div style="text-align: center;">
-			 <input type="submit" value="Registrar">
-		</div>
-		  
-		
-    </form>
+    </div>
 </div>
+		
+		 	
+		<h1 align =center>Formulario de Registro</h1> 
+
+		<form th:action="@{/savecita}" th:object="${cita}" method="post" class="form-control">
+			<div id="grupo1">
+    <div class="form-group row g-3 align-items-center">
+        <label for="inputCliente" class="col-auto col-form-label">Cliente</label>
+        <div class="col-auto">
+            <select id="inputCliente" class="form-control" th:field="*{cliente.codCliente}" name="cod_cliente">
+                <option th:value="-1" th:text="Seleccione"></option>
+                <option th:each="cli : ${listClientes}" th:value="${cli.codCliente}" th:text="${cli.nombres}"></option>
+            </select>
+        </div>
+        <label for="inputMascota" class="col-auto col-form-label">Mascota</label>
+        <div class="col-auto">
+            <select id="inputMascota" class="form-control" th:field="*{mascota.codMascota}">
+                <option th:value="-1" th:text="Seleccione"></option>
+
+            </select>
+        </div>
+        <label for="inputVeterinario" class="col-auto col-form-label">Veterinario</label>
+        <div class="col-auto">
+			<select id="inputVet" class="form-control" th:field="*{vet.codVeterinario}">
+				<option th:value="-1" th:text="Seleccione"></option>
+				<option th:each="v : ${listVet}" th:value="${v.codVeterinario}" th:text="${v.nombres_veterinario}"></option>
+			</select>
+        </div>
+        <label for="inputServicio" class="col-auto col-form-label">Servicio</label>
+        <div class="col-auto">
+			<select id="inputVet" class="form-control" th:field="*{servicio.codServicio}">
+				<option th:value="-1" th:text="Seleccione"></option>
+				<option th:each="s : ${listServ}" th:value="${s.codServicio}" th:text="${s.nombre_servicio}"></option>
+			</select>
+        </div>
+    </div>
+</div>
+
+						
+						<div id="grupo2">
+								<div class="row g-3 align-items-center mt-2">
+							<div class="col-auto">
+								<label for="cod_cliente" class="col-form-label">Fecha cita</label>
+							</div>
+							<div class="col-auto">
+								<input type="date" th:field="*{fecha_cita}" id="inputPassword6" class="form-control input-date" placeholder="Select Date"  required>
+							</div>
+							<div class="col-auto">
+								<label for="inputnombre" class="col-form-label">Hora cita</label>
+							</div>
+							<div class="col-auto">
+								<input type="time" th:field="*{hora_cita}" id="cod_mascota" class="form-control input-date" placeholder="Select Time" >					
+							</div>
+							<div class="col-auto">
+								<label for="inputnombre" class="col-form-label">Duracion Estimada</label>
+							</div>
+							<div class="col-auto">
+								<input type="time"  th:field="*{duracion_estimada}" id="cod_mascota" class="form-control input-date"placeholder="Select Time">
+							</div>
+						</div>
+						<div id="grupo1" style="margin-left: 410px;">
+							<div class="form-group row g-3 align-items-center mt-3">
+								<div class="col-auto" style="white-space: nowrap;">
+									<label for="duracion" class="col-form-label">Estado Cita</label>
+								</div>
+							<div class="col-auto">
+								<select id="inputVet" class="form-control" th:field="*{estado_cita}">
+									<option th:value="-1" th:text="Seleccione"></option>
+									<option th:value="Agendada" th:text="Agendada"></option>
+									<option th:value="Cancelada" th:text="Cancelada"></option>
+								</select>
+							</div>
+							</div>
+						</div>
+						
+					
+						</div>
+						<div id="botones" class="text-center">
+							<button type="submit" class="btn btn-primary">Guardar</button>
+							<a href="/vercita" class="btn btn-warning">Ver Cita</a>
+	 					</div>
+	 	</form>
+		<script>
+			
+			config2 ={
+					
+					locale: "es"
+			}
+			
+		flatpickr("input[type=date]",config2);	
+
+			config = {
+				enableTime: true,
+				noCalendar: true,
+				dateFormat: "H:i",
+			}
+			flatpickr("input[type=time]", config);		
+		</script>
+		
+		
+		</div>
+
+
+
+
 </body>
+
+
+
+
+<script src="assets/js/vendor-all.min.js"></script>
+	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/pcoded.min.js"></script>
+    
+    <script src="js/js.js"></script>	
+
 
 </html>

@@ -56,9 +56,9 @@
 								</div>
 								<div class="form-group col-md-12">
 									<label for="inputCliente">Dueño</label>
-									<select id="inputCliente" class="form-control" th:field="*{cliente.cod_cliente}">
+									<select id="inputCliente" class="form-control" th:field="*{cliente.codCliente}">
 										<option th:value="-1" th:text="Seleccione"></option>
-										<option th:each="c : ${lstClientes}" th:value="${c.cod_cliente}" th:text="${c.nombres + ' ' + c.apellidos}"></option>
+										<option th:each="c : ${lstClientes}" th:value="${c.codCliente}" th:text="${c.nombres + ' ' + c.apellidos}"></option>
 									</select>
 								</div>											
 								<div class="form-group col-md-6">

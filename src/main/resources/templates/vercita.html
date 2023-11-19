@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="layout :: head"> 
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+</head>
+
+<body>
+	
+		
+	
+		
+			<header th:replace="layout :: header">
+		
+	</header>
+
+	
+	<h1 class="mt-3" style="text-align: center;">HISTORIAL DE CITAS</h1>
+	
+			  	<!-- Alerta Confirmar-->					
+	<div class="alert alert-danger alert-dismissible fade show mt-3" th:if="${sucess}!=null" role="alert">
+		  <label th:text="${sucess}"></label>
+		  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+
+	<div class="container mt-5">
+		
+		 <table id="table" class="table table-striped display" style="width:100%">
+
+        <thead class="table-dark">
+            <tr>
+                <th>Codigo de Cita</th>
+                <th>Cliente</th>
+                <th>Mascota</th>
+                <th>Fecha de Cita</th>
+                <th>Hora de Cita</th>
+                <th>Servicio</th>
+                <th>Veterinario</th>
+                <th>Duracion</th>
+                <th>Estado</th>
+                <th>Accion</th>
+                
+            </tr>
+        </thead>
+        <tbody>		
+            <tr th:each="c : ${listCitas}">
+                <td th:text="${c.codCita}"></td>
+                <td th:text="${c.cliente.nombres}"></td>
+                <td th:text="${c.mascota.nombre_mascota}"></td>
+                <td th:text="${#dates.format(c.fecha_cita,'dd-MM-yyyy')}"></td>
+                <td th:text="${c.hora_cita.substring(0,5)}"></td>
+                <td th:text="${c.servicio.nombre_servicio}"></td>
+                <td th:text="${c.vet.nombres_veterinario}"></td>
+                <td th:text="${c.duracion_estimada.substring(0,5)}"></td>
+                <td th:text="${c.estado_cita}"></td>
+				<!-- Button trigger modal -->
+				<td><button type="button" class="btn btn-success btnmodal">
+					Pagar
+				</button></td>
+				
+            </tr>
+        </tbody>
+        
+       <script>
+	$(document).ready(function(){
+		$('.btnmodal').on('click',function(){
+			$('#AbrirModal').modal('show');
+			$tr = $(this).closest('tr');
+			var data = $tr.children("td").map(function(){
+				return $(this).text();
+			}).get();
+			console.log(data);
+			$('#codigocita').val(data[0]);
+		})
+	});
+	
+
+</script>
+
+    </table>
+    
+  	
+	</div>
+	
+	
+	<!-- Modal -->
+<div class="modal fade" id="AbrirModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">REGISTRAR PAGO</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+			<form th:action="@{/SavePago}"  method="post">
+				<table class="table">
+					<tr>
+						<td>
+							<label for="codigo" class="form-label">Codigo : </label>
+						</td>
+						<td>
+							<input type="number" class="form-control" name="codigocita" id="codigocita" style="width: 150px;" readonly>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="total" class="form-label">Monto Total : </label>
+						</td>
+						<td>
+							<input type="number" name="monto_total" class="form-control" id="total">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="FechaPago" class="form-label">Fecha de Pago : </label>
+						</td>
+						<td>
+							<input type="date" name="fecha_hora_pago" class="form-control" id="fechapago" readonly>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="Comprobante" class="form-label">Comprobante : </label>
+						</td>
+						<td>
+				
+							<select id="inputComprobante" class="form-control" name="tipo_comprobante" required>
+								<option th:value="-1" th:text="Seleccione"></option>
+								<option th:value="Boleta" th:text="Boleta"></option>
+								<option th:value="Factura" th:text="Factura"></option>
+							</select>
+						</td>
+					</tr>
+
+				</table>
+				<div class="text-center mt-2">
+					<button type="submit" class="btn btn-primary">Realizar Pago</button>|
+					<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+				
+				</div>
+				<script>
+					document.getElementById('fechapago').valueAsDate = new Date();
+				</script>
+			</form>
+      </div>
+
+    </div>
+  </div>
+</div>
+	
+	
+	
+	
+	<script>
+		new DataTable('#table', {
+			  language: {
+        url: 'https://cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json',
+    		},
+			     
+            
+			dom: 'Bfrtip',
+			buttons: [	
+	 
+				{
+				extend:    'excelHtml5',
+				text:      '<i class="bi bi-file-earmark-excel"></i> ',
+				titleAttr: 'Exportar a Excel',
+				className: 'btn btn-success'
+			},
+			  {
+				extend:    'pdfHtml5',
+				text:      '<i class="bi bi-filetype-pdf"></i>',
+				titleAttr: 'Exportar a PDF',
+				className: 'btn btn-danger'
+			},
+			  	
+			  {
+                extend: 'print',
+                text:      '<i class="bi bi-printer"></i>',
+                titleAttr: 'Imprimir',
+                className: 'btn btn-warning',
+                exportOptions: {
+                    columns: ':visible'
+                }
+             },
+				{
+					text: 'Registrar Cita',
+					action: function (e, dt, node, config) {
+						window.location.href = '/citas';
+					},
+					className: 'btn btn-info'
+				},
+
+             
+             
+
+            ],
+
+    } );
+	
+	</script>
+	
+<script src="assets/js/vendor-all.min.js"></script>
+	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/pcoded.min.js"></script>
+    
+	
+	
+	
+	 
+</body>
+</html>

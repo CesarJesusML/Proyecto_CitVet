@@ -48,7 +48,7 @@
 					    		</thead>
 					    		<tbody>
 								    <tr th:each="m : ${lstMascotas}">
-								        <td th:text="${m.cod_mascota}" class="text-center align-middle"></td>
+								        <td th:text="${m.codMascota}" class="text-center align-middle"></td>
 								        <td>
 										    <img th:src="@{'/imagenes/mascotas/' + ${m.foto_mascota}}" alt="Foto" class="img-thumbnail" style="width: 70px;" />
 										</td>

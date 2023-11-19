@@ -1,10 +1,13 @@
 package com.citvet.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -13,7 +16,7 @@ public class Cliente {
 
     @Id
     @Column(name = "cod_cliente")
-    private int cod_cliente;
+    private int codCliente;
 
     @Column(name = "nombres")
     private String nombres;
@@ -41,18 +44,20 @@ public class Cliente {
     private String estado;
     
 
+  
     // getters y setters
     
-	public int getCod_cliente() {
-		return cod_cliente;
-	}
-
-	public void setCod_cliente(int cod_cliente) {
-		this.cod_cliente = cod_cliente;
-	}
 
 	public String getNombres() {
 		return nombres;
+	}
+
+	public int getCodCliente() {
+		return codCliente;
+	}
+
+	public void setCodCliente(int codCliente) {
+		this.codCliente = codCliente;
 	}
 
 	public void setNombres(String nombres) {

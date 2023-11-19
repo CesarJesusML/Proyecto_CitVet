@@ -20,7 +20,7 @@ public class Mascota {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_mascota")
-    private int cod_mascota;
+    private int codMascota;
 
     @Column(name = "nombre_mascota")
     private String nombre_mascota;
@@ -61,16 +61,18 @@ public class Mascota {
     
     // Getters y setters
 
-	public int getCod_mascota() {
-		return cod_mascota;
-	}
 
-	public void setCod_mascota(int cod_mascota) {
-		this.cod_mascota = cod_mascota;
-	}
 
 	public String getNombre_mascota() {
 		return nombre_mascota;
+	}
+
+	public int getCodMascota() {
+		return codMascota;
+	}
+
+	public void setCodMascota(int codMascota) {
+		this.codMascota = codMascota;
 	}
 
 	public void setNombre_mascota(String nombre_mascota) {
