@@ -84,39 +84,48 @@
                 <ul class="nav pcoded-inner-navbar">
                     <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
                         <a href="/inicio" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
-                    </li>             
-                    <li data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds" class="nav-item pcoded-hasmenu">
-                        <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Citas</span></a>
-                        <ul class="pcoded-submenu">
-                            <li class=""><a href="#" class="">Calendario de Citas</a></li>
-                            <li class=""><a href="#" class="">Programar Nueva Cita</a></li>
-                            <li class=""><a href="#" class="">Historial de Citas</a></li>
-                        </ul>
-                    </li>
+                    </li>                               
                     <li data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds" class="nav-item pcoded-hasmenu">
                         <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Clientes</span></a>
                         <ul class="pcoded-submenu">
-
-                            <li class=""><a href="servicios.html" class="">Servicios Veterinarios</a></li>
-                            <li class=""><a href="historial-servicios.html" class="">Ver Historial Completo</a></li>
-                            <li class=""><a href="tratamiento-servicios.html" class="">Registrar Nuevo Tratamiento</a></li>
-                            <li class=""><a href="examen-servicios.html" class="">Exámenes y Resultados</a></li>
-                            <li class=""><a href="recetas-serv.html" class="">Recetas Médicas</a></li>                  
+                           	<li class=""><a href="#" class="">Listar clientes</a></li>
+                            <li class=""><a href="#" class="">Nuevo cliente</a></li>                
                         </ul>
                     </li>
                     <li data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds" class="nav-item pcoded-hasmenu">
                         <a id="verProductosLink" href="javascript:" class="nav-link "><span class="pcoded-micon"><i class="fas fa-paw"></i></span><span class="pcoded-mtext">Mascotas</span></a>
                         <ul class="pcoded-submenu">
-                            <li class=""><a href="/mascota-listado" class="">Ver Mascotas</a></li>
+                            <li class=""><a href="/mascota-listado" class="">Listar mascotas</a></li>
+                            <li class=""><a href="/mascota-listado" class="">Nueva mascota</a></li>
                         </ul>
                     </li>
                     <li data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds" class="nav-item pcoded-hasmenu">
                         <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i class="fas fa-stethoscope"></i></span><span class="pcoded-mtext">Servicios</span></a>
                         <ul class="pcoded-submenu">
-                            <li class=""><a href="{{ route('proveedor.index') }}" class="">Ver Proveedores</a></li>
+                            <li class=""><a href="#" class="">Listar servicios</a></li>
+                            <li class=""><a href="#" class="">Nuevo servicio</a></li>
                         </ul>
                     </li>
-               
+                    <li data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds" class="nav-item pcoded-hasmenu">
+                        <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Veterinarios</span></a>
+                        <ul class="pcoded-submenu">
+                            <li class=""><a href="#" class="">Listar veterinarios</a></li>
+                            <li class=""><a href="#" class="">Nuevo veterinario</a></li>
+                        </ul>
+                    </li>            
+                    <li data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds" class="nav-item pcoded-hasmenu">
+                        <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Citas</span></a>
+                        <ul class="pcoded-submenu">
+                            <li class=""><a href="/citas" class="">Registrar citas</a></li>
+                            <li class=""><a href="/vercita" class="">Historial de citas</a></li>
+                        </ul>
+                    </li> 
+                    <li data-username="basic components Button Alert Badges breadcrumb Paggination progress Tooltip popovers Carousel Cards Collapse Tabs pills Modal Grid System Typography Extra Shadows Embeds" class="nav-item pcoded-hasmenu">
+                        <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Consultas</span></a>
+                        <ul class="pcoded-submenu">
+                            <li class=""><a href="/consultas" class="">Consultar Ventas</a></li>
+                        </ul>
+                    </li>                
                 </ul>
             </div>
         </div>
@@ -264,6 +273,11 @@
 	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/pcoded.min.js"></script>
 
+	<style>
+	a {
+	    text-decoration: none;
+	}
+	</style>
     
 </body>
 </html>

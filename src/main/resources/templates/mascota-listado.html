@@ -18,8 +18,9 @@
 </div>
 <!-- /.content-header -->
 
-<!-- Hoverable rows start -->
+<button type="button" class="btn btn-primary mb-3" title="btn btn-primary" data-toggle="tooltip" onclick="window.location.href='/mascota-nueva'">Agregar mascota</button>
 
+<!-- Hoverable rows start -->
 <div class="main-body">
     <div class="page-wrapper">
         <div class="row">
@@ -90,7 +91,7 @@
       </div>
       	<form th:action="@{/eliminar}" method="post">
 	      <div class="modal-body">
-			 <input type="hidden" name="codigo" id="codigo">
+			 <input type="hidden" name="codMascota" id="codigo">
 			 </span>&nbsp;<span id="nombreMascota"></span>
 	      </div>
 	      <div class="modal-footer">
@@ -102,7 +103,6 @@
 	</div>
 </div>
 <!-- Fin del Modal -->
-
 
 <script>
 	$(document).ready(function(){

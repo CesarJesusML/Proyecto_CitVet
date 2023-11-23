@@ -80,6 +80,13 @@ public class MascotaController {
 	    return "redirect:/mascota-nueva";
 	}
 
+	@PostMapping("/eliminar")
+	public String eliminarPag(@ModelAttribute Mascota mascota, RedirectAttributes attribute) {
+		Mascota masc = mascrepo.findByCodMascota(mascota.getCodMascota());
+		mascrepo.delete(masc);
+		attribute.addFlashAttribute("sucess","Mascota eliminada con éxito!");
+		return "redirect:/mascota-listado";
+	}
 
 
 	
