@@ -62,7 +62,7 @@ public class prueba {
 	  
 	  @Test
 	  public void test2() {
-		   Cliente cliente = cli.findBycodCliente(3); // Obtén el cliente por su código
+		   Cliente cliente = cli.findByCodCliente(3); // Obtén el cliente por su código
 		    List<Mascota> listMascotas = m.nombredemascota(cliente.getCodCliente()); // Obtén la lista de mascotas del cliente
 
 		    assertNotNull(listMascotas); // Verificar que la lista no sea nula
@@ -75,7 +75,7 @@ public class prueba {
 	  
 	  @Test
 	  public void test4() {
-	      Cliente cliente = cli.findBycodCliente(3); // Obtén el cliente por su código
+	      Cliente cliente = cli.findByCodCliente(3); // Obtén el cliente por su código
 	      List<Object[]> codigosYnombresDeMascotas = m.codigosYnombresDeMascotas(cliente.getCodCliente());
 
 	      assertNotNull(codigosYnombresDeMascotas); // Verificar que la lista no sea nula

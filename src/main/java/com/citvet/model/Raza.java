@@ -13,11 +13,11 @@ public class Raza {
 
     @Id
     @Column(name = "cod_raza")
-    private int cod_raza;
+    private int codRaza;
 
     @ManyToOne
     @JoinColumn(name = "cod_especie")
-    Especie especie;
+    private Especie especie;
 
     @Column(name = "nombre_raza")
     private String nombre_raza;
@@ -26,12 +26,12 @@ public class Raza {
     private char condicion;
 
     // Getters y setters
-    public int getCod_raza() {
-        return cod_raza;
+    public int getCodRaza() {
+        return codRaza;
     }
 
-    public void setCod_raza(int cod_raza) {
-        this.cod_raza = cod_raza;
+    public void setCodRaza(int codRaza) {
+        this.codRaza = codRaza;
     }
 
     public Especie getEspecie() {
@@ -58,4 +58,3 @@ public class Raza {
         this.condicion = condicion;
     }
 }
-

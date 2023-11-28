@@ -43,7 +43,7 @@
 			
 					
 					<!-- form start -->
-					<form th:action="@{/grabar}" th:object="${mascota}" method="post" name="formulario" enctype="multipart/form-data">
+					<form th:action="@{/grabarMascota}" th:object="${mascota}" method="post" name="formulario" enctype="multipart/form-data">
 						<div class="card-body">
 							<div class="row">
 								<div class="form-group col-md-6">
@@ -63,16 +63,16 @@
 								</div>											
 								<div class="form-group col-md-6">
 									<label for="inputEspecie">Especie</label>
-									<select id="inputEspecie" class="form-control" th:field="*{especie.cod_especie}">
+									<select id="inputEspecie" class="form-control" th:field="*{especie.codEspecie}">
 										<option th:value="-1" th:text="Seleccione"></option>
-										<option th:each="e : ${lstEspecies}" th:value="${e.cod_especie}" th:text="${e.nombre_especie}"></option>
+										<option th:each="e : ${lstEspecies}" th:value="${e.codEspecie}" th:text="${e.nombre_especie}"></option>
 									</select>
 								</div>
 								<div class="form-group col-md-6">
 									<label for="inputRaza">Raza</label>
-									<select id="inputRaza" class="form-control" th:field="*{raza.cod_raza}">
+									<select id="inputRaza" class="form-control" th:field="*{raza.codRaza}">
 										<option th:value="-1" th:text="Seleccione"></option>
-										<option th:each="r : ${lstRazas}" th:value="${r.cod_raza}" th:text="${r.nombre_raza}"></option>					
+										<option th:each="r : ${lstRazas}" th:value="${r.codRaza}" th:text="${r.nombre_raza}"></option>					
 									</select>
 								</div>				
 								<div class="form-group col-md-3">

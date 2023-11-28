@@ -36,15 +36,10 @@ public class Veterinario {
 
     @Column(name = "estado")
     private String estado;
-
+    
     // Getters y setters
 
-
-    public String getNombres_veterinario() {
-        return nombres_veterinario;
-    }
-
-    public int getCodVeterinario() {
+	public int getCodVeterinario() {
 		return codVeterinario;
 	}
 
@@ -52,55 +47,61 @@ public class Veterinario {
 		this.codVeterinario = codVeterinario;
 	}
 
+	public String getNombres_veterinario() {
+		return nombres_veterinario;
+	}
+
 	public void setNombres_veterinario(String nombres_veterinario) {
-        this.nombres_veterinario = nombres_veterinario;
-    }
+		this.nombres_veterinario = nombres_veterinario;
+	}
 
-    public String getApellidos_veterinario() {
-        return apellidos_veterinario;
-    }
+	public String getApellidos_veterinario() {
+		return apellidos_veterinario;
+	}
 
-    public void setApellidos_veterinario(String apellidos_veterinario) {
-        this.apellidos_veterinario = apellidos_veterinario;
-    }
+	public void setApellidos_veterinario(String apellidos_veterinario) {
+		this.apellidos_veterinario = apellidos_veterinario;
+	}
 
-    public String getDni() {
-        return dni;
-    }
+	public String getDni() {
+		return dni;
+	}
 
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
 
-    public Distrito getDistrito() {
-        return distrito;
-    }
+	public Distrito getDistrito() {
+		return distrito;
+	}
 
-    public void setDistrito(Distrito distrito) {
-        this.distrito = distrito;
-    }
+	public void setDistrito(Distrito distrito) {
+		this.distrito = distrito;
+	}
 
-    public String getDireccion() {
-        return direccion;
-    }
+	public String getDireccion() {
+		return direccion;
+	}
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
 
-    public String getEspecialidad() {
-        return especialidad;
-    }
+	public String getEspecialidad() {
+		return especialidad;
+	}
 
-    public void setEspecialidad(String especialidad) {
-        this.especialidad = especialidad;
-    }
+	public void setEspecialidad(String especialidad) {
+		this.especialidad = especialidad;
+	}
 
-    public String getEstado() {
-        return estado;
-    }
+	public String getEstado() {
+		return estado;
+	}
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+      
 }

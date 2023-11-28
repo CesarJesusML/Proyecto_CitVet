@@ -1,0 +1,118 @@
+<div th:fragment="content">
+<!-- Content Header (Page header) -->
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Listado de Servicios</h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/inicio"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="javascript:">Servicios</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:">Listado</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.content-header -->
+
+<button type="button" class="btn btn-primary mb-3" title="btn btn-primary" data-toggle="tooltip" onclick="window.location.href='/servicio-nuevo'">Nuevo Servicio</button>
+
+<!-- Hoverable rows start -->
+<div class="main-body">
+    <div class="page-wrapper">
+        <div class="row">
+
+            <!-- [ striped-table ] start -->
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-block table-border-style">                 
+                        <!-- table hover -->
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+					    			<tr>
+										<th scope="col" class="text-center">Código</th>
+										<th scope="col">Nombre</th>
+					    				<th scope="col">Descripción</th>
+					    				<th scope="col">Tipo de Servicio</th>
+					    				<th scope="col">Precio</th>
+					    				<th scope="col">Duración Estimada</th>
+					    				<th scope="col">Materiales Necesarios</th>
+					    				<th></th>
+					    				<th></th>
+					    			</tr>
+					    		</thead>
+					    		<tbody>
+								    <tr th:each="s : ${lstServicios}">
+								        <td th:text="${s.codServicio}" class="text-center align-middle"></td>
+								        <td th:text="${s.nombre_servicio}" class="align-middle"></td>
+								        <td th:text="${s.descripcion}" class="align-middle"></td>
+								        <td th:text="${s.tipoServicio.descripcion_tipo}" class="align-middle"></td>
+								        <td th:text="${s.precio}" class="align-middle"></td>
+								        <td th:text="${s.duracion_estimada}" class="align-middle"></td>
+								        <td th:text="${s.materiales_necesarios}" class="align-middle"></td>
+								        <td class="align-middle">
+											<button class="btn btn-primary" th:onclick="'editarServicio(' + ${s.codServicio} + ')'" >Editar</button>
+					    				</td>
+					    				<td class="align-middle"> 
+						                    <button type="button" class="btn btn-danger deletebtn">Eliminar</button>
+						                </td>
+								    </tr>
+								</tbody>
+                            </table>
+                        </div>
+                                              	
+                    </div>
+                </div>
+            </div>           
+            <!-- [ striped-table ] end -->
+        </div>       
+    </div>
+</div>
+
+
+<!-- Inicio del Modal -->
+<div class="modal fade" id="modal_eliminar_servicio" tabindex="-1" aria-labelledby="eliminarModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+    	<div class="modal-content">
+      		<div class="modal-header">
+        		<h5 class="modal-title">Eliminar Servicio</h5>
+	        	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      	</div>
+		  	<form th:action="@{/eliminarServicio}" method="post">
+	        	<div class="modal-body">
+					<input type="hidden" name="codServicio" id="codigo_servicio">
+ 	  				</span>&nbsp;<span id="nombre_servicio"></span>
+		    	</div>
+		        <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cancelar </button>
+			        <button type="submit" name="deletedata" class="btn btn-primary">Sí, eliminar</button>
+		        </div>
+			</form>
+    	</div>
+	</div>
+</div>
+<!-- Fin del Modal -->
+
+
+<script>
+	// Boton eliminar servicio
+	$(document).ready(function(){
+		$('.deletebtn').on('click',function(){
+			$('#modal_eliminar_servicio').modal('show');
+			$tr = $(this).closest('tr');
+			var data = $tr.children("td").map(function(){
+				return $(this).text();
+			}).get();
+			console.log(data);
+			$('#codigo_servicio').val(data[0]);
+			$('#nombre_servicio').text("¿Está seguro de eliminar el servicio: "+ data[1]+"?");
+		})
+	});
+</script>
+
+<!-- Hoverable rows end -->
+</div>

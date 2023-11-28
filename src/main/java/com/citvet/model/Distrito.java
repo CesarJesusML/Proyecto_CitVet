@@ -11,7 +11,7 @@ public class Distrito {
 
     @Id
     @Column(name = "cod_distrito")
-    private int cod_distrito;
+    private int codDistrito;
 
     @Column(name = "nom_distrito")
     private String nom_distrito;
@@ -20,27 +20,30 @@ public class Distrito {
     private char condicion;
 
     // Getters y setters
-    public int getCod_distrito() {
-        return cod_distrito;
-    }
+    
+	public int getCodDistrito() {
+		return codDistrito;
+	}
 
-    public void setCod_distrito(int cod_distrito) {
-        this.cod_distrito = cod_distrito;
-    }
+	public void setCodDistrito(int codDistrito) {
+		this.codDistrito = codDistrito;
+	}
 
-    public String getNom_distrito() {
-        return nom_distrito;
-    }
+	public String getNom_distrito() {
+		return nom_distrito;
+	}
 
-    public void setNom_distrito(String nom_distrito) {
-        this.nom_distrito = nom_distrito;
-    }
+	public void setNom_distrito(String nom_distrito) {
+		this.nom_distrito = nom_distrito;
+	}
 
-    public char getCondicion() {
-        return condicion;
-    }
+	public char getCondicion() {
+		return condicion;
+	}
 
-    public void setCondicion(char condicion) {
-        this.condicion = condicion;
-    }
+	public void setCondicion(char condicion) {
+		this.condicion = condicion;
+	}
+    
+    
 }

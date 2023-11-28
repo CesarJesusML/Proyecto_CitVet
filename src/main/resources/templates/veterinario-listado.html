@@ -1,0 +1,114 @@
+<div th:fragment="content">
+<!-- Content Header (Page header) -->
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Listado de Veterinarios</h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/inicio"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="javascript:">Veterinarios</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:">Listado</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.content-header -->
+
+<button type="button" class="btn btn-primary mb-3" title="btn btn-primary" data-toggle="tooltip" onclick="window.location.href='/veterinario-nuevo'">Nuevo Veterinario</button>
+
+<!-- Hoverable rows start -->
+<div class="main-body">
+    <div class="page-wrapper">
+        <div class="row">
+            <!-- [ striped-table ] start -->
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-block table-border-style">
+                        <!-- table hover -->
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="text-center">Codigo</th>
+                                        <th scope="col">Nombres</th>
+                                        <th scope="col">Apellidos</th>
+                                        <th scope="col">Dni</th>
+                                        <th scope="col">Distrito</th>
+                                        <th scope="col">Direcciòn</th>
+                                        <th scope="col">Especialidad</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="v : ${lstVeterinarios}">
+                                        <td th:text="${v.codVeterinario}" class="text-center align-middle"></td>
+                                        <td th:text="${v.nombres_veterinario}" class="align-middle"></td>
+                                        <td th:text="${v.apellidos_veterinario}" class="align-middle"></td>
+                                        <td th:text="${v.dni}" class="align-middle"></td>
+                                        <td th:text="${v.distrito.nom_distrito}" class="align-middle"></td>
+                                        <td th:text="${v.direccion}" class="align-middle"></td>
+                                        <td th:text="${v.especialidad}" class="align-middle"></td>
+                                        <td class="align-middle">
+                                            <button class="btn btn-primary" th:onclick="'editarVeterinario(' + ${v.codVeterinario} + ')'" >Editar</button>
+                                        </td>
+                                        <td class="align-middle"> 
+                                            <button type="button" class="btn btn-danger deletebtn">Eliminar</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [ striped-table ] end -->
+        </div>       
+    </div>
+</div>
+
+<!-- Inicio del Modal -->
+<div class="modal fade" id="modal_eliminar_veterinario" tabindex="-1" aria-labelledby="eliminarModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Eliminar Cliente</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+		    <form th:action="@{/eliminarVeterinario}" method="post">
+		        <div class="modal-body">
+		            <input type="hidden" name="codVeterinario" id="codigo_veterinario">
+		            </span>&nbsp;<span id="nombre_veterinario"></span>
+		        </div>
+		        <div class="modal-footer">
+		            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Cancelar </button>
+		            <button type="submit" name="deletedata" class="btn btn-primary">Sí, eliminar</button>
+		        </div>
+		    </form>
+	    </div>
+	</div>
+</div>
+<!-- Fin del Modal -->
+
+<script>
+    // Boton eliminar veterinario
+    $(document).ready(function(){
+        $('.deletebtn').on('click',function(){
+            $('#modal_eliminar_veterinario').modal('show');
+            $tr = $(this).closest('tr');
+            var data = $tr.children("td").map(function(){
+                return $(this).text();
+            }).get();
+            console.log(data);
+            $('#codigo_veterinario').val(data[0]);
+            $('#nombre_veterinario').text("¿Está seguro de eliminar al veterinario: "+ data[1]+"?");
+        })
+    });
+</script>
+
+<!-- Hoverable rows end -->
+</div>

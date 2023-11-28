@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -54,9 +55,10 @@ public class MascotaController {
 		return "layout";
 	}
 		
-	@PostMapping("/grabar")
+	@PostMapping("/grabarMascota")
 	public String grabarPag(@ModelAttribute Mascota mascota, @RequestParam("imagen") MultipartFile imagen, RedirectAttributes attribute) {
 	    try {
+	        mascota.setEstado("Activo");
 	        Mascota savedMascota = mascrepo.save(mascota);
 	        if (savedMascota != null) {
 	            if (imagen != null && !imagen.isEmpty()) {
@@ -77,7 +79,28 @@ public class MascotaController {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
-	    return "redirect:/mascota-nueva";
+	    return "redirect:/mascota-listado";
+	}
+	
+	@GetMapping("/editar/{codMascota}")
+	public String editarPag(@PathVariable int codMascota, Model model) {
+	    model.addAttribute("mascota", mascrepo.findByCodMascota(codMascota));
+	    model.addAttribute("lstEspecies", espe.findAll());
+	    model.addAttribute("lstRazas", raza.findAll());
+	    return "editarMascota :: modalContent";  // Devuelve solo la parte del modal, no toda la página
+	}
+
+	@PostMapping("/actualizar")
+	public String actualizarPag(@ModelAttribute Mascota mascota, RedirectAttributes attribute, Model model) {
+	    if (mascrepo.save(mascota) != null) {
+	        attribute.addFlashAttribute("sucess", "Actualizado con éxito!");
+	    } else {
+	        attribute.addFlashAttribute("unsucess", "Error actualizando!");
+	    }
+	    model.addAttribute("mascota", mascota);
+	    model.addAttribute("lstMascotas", mascrepo.findAll());  
+	    model.addAttribute("content", "mascota-listado");  
+	    return "layout";
 	}
 
 	@PostMapping("/eliminar")
@@ -87,10 +110,6 @@ public class MascotaController {
 		attribute.addFlashAttribute("sucess","Mascota eliminada con éxito!");
 		return "redirect:/mascota-listado";
 	}
-
-
-	
-
 
 }
 	

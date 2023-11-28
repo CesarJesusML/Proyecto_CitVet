@@ -6,5 +6,5 @@ import com.citvet.model.Servicio;
 
 public interface IServicioRepository extends JpaRepository<Servicio, Integer> {
 
-		Servicio findByCodServicio(int cod_servicio);
+		Servicio findByCodServicio(int codservicio);
 }

@@ -11,31 +11,30 @@ public class TipoServicio {
 
     @Id
     @Column(name = "cod_tipo_servicio")
-    private int cod_tipo_servicio;
+    private int codTipoServicio;
 
     @Column(name = "descripcion")
-    private String descripcion;
+    private String descripcion_tipo;
 
     @Column(name = "condicion")
     private char condicion;
-
     
     // Getters y setters
-    
-	public int getCod_tipo_servicio() {
-		return cod_tipo_servicio;
+
+	public int getCodTipoServicio() {
+		return codTipoServicio;
 	}
 
-	public void setCod_tipo_servicio(int cod_tipo_servicio) {
-		this.cod_tipo_servicio = cod_tipo_servicio;
+	public void setCodTipoServicio(int codTipoServicio) {
+		this.codTipoServicio = codTipoServicio;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
+	public String getDescripcion_tipo() {
+		return descripcion_tipo;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setDescripcion_tipo(String descripcion_tipo) {
+		this.descripcion_tipo = descripcion_tipo;
 	}
 
 	public char getCondicion() {
@@ -45,6 +44,6 @@ public class TipoServicio {
 	public void setCondicion(char condicion) {
 		this.condicion = condicion;
 	}
-    
-    
+
+	 
 }

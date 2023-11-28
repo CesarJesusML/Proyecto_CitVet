@@ -11,7 +11,7 @@ public class Especie {
 
     @Id
     @Column(name = "cod_especie")
-    private int cod_especie;
+    private int codEspecie;
 
     @Column(name = "nombre_especie")
     private String nombre_especie;
@@ -20,12 +20,12 @@ public class Especie {
     private char condicion;
 
     // Getters y setters
-    public int getCod_especie() {
-        return cod_especie;
+    public int getCodEspecie() {
+        return codEspecie;
     }
 
-    public void setCod_especie(int cod_especie) {
-        this.cod_especie = cod_especie;
+    public void setCodEspecie(int codEspecie) {
+        this.codEspecie = codEspecie;
     }
 
     public String getNombre_especie() {

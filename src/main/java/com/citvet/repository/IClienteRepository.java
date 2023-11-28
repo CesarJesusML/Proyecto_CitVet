@@ -8,7 +8,7 @@ import com.citvet.model.Cliente;
 
 public interface IClienteRepository extends JpaRepository<Cliente, Integer> {
 	
-	Cliente findBycodCliente(int cod_cliente);
+	Cliente findByCodCliente(int codCliente);
 	
 	
 }
