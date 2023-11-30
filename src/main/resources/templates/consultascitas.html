@@ -3,6 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Consultas</title>
+
+	    <!-- Favicon icon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="assets/fonts/fontawesome/css/fontawesome-all.min.css">
+    <!-- animation css -->
+    <link rel="stylesheet" href="assets/plugins/animation/css/animate.min.css">
+    <!-- vendor css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
@@ -14,21 +25,89 @@
 </head>
 
 <body>
-	
-<div class="container" >
-	<h1>Consultas</h1>
-	
+	<style>
+	  body {
+    background-image: url('fondo/fondocons.jpg');
+    background-size: contain; /* Ajusta la imagen para que quepa dentro del body sin cortar */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center center; /* Centra la imagen tanto vertical como horizontalmente */
+    height: 100vh; /* Establece la altura del body al 100% del viewport height */
+    margin: 0; /* Elimina el margen por defecto del body */
+	background-color: #F5F5F5;
+    align-items: center;
+    justify-content: center;
+}
 
+.titulo{
+	color: #3F4D67;
+	font-size: 45px;
+}
+.table-transparent {
+    background-color: transparent; /* Fondo transparente para la tabla */
+}
+
+.table-transparent thead th {
+    background-color: transparent; /* Fondo transparente para las celdas de encabezado */
+    border-color: transparent; /* Bordes transparentes para las celdas de encabezado */
+}
+
+.table-transparent tbody td {
+    background-color: rgba(255, 255, 255, 0.5); /* Fondo semi-transparente para las celdas del cuerpo */
+    border-color: transparent; /* Bordes transparentes para las celdas del cuerpo */
+}
+ .table thead th {
+            color:#1DDFC4;
+            font-size: 20px;
+        }
+         .table thead th {
+            border-bottom: 2px solid #1DDFC4;
+        }
+</style>
+	
+		<nav th:replace="layout :: nav">
+	</nav>
+	
+			<header th:replace="layout :: header">
+		
+	</header>
+	
+	
+	<div class="pcoded-main-container" > 
+				<div class="page-header" style="margin-left: 30px;">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">Listado de Mascotas</h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/inicio"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="javascript:">Mascotas</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:">Consultas</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+		
+		
+<div class="container text-center mt-5" >
+	<h1 class="titulo">Consultas Por Dia</h1>
 	
 			<form th:action="@{/consulta1}" method="get" class="mb-2">
 			<label for="codVeterinario">Código del Vet : </label>
-			<input type="text" name="codVeterinario" id="codVeterinario" required>
+			<div style="margin-left: 590px;">
+						<select id="inputVet" class="form-select" name="codVeterinario" style="width: 150px;">
+				<option th:value="-1" th:text="Seleccione"></option>
+				<option th:each="v : ${listVet}" th:value="${v.codVeterinario}" th:text="${v.nombres_veterinario}" ></option>
+			</select>
+			</div>
 			<label for="fecha">Fecha de la cita: </label>
 			<input type="date" name="fecha_cita" id="fecha_cita">
 			<button type="submit" class="btn btn-primary">Buscar</button>
 			</form>
 	
-	<table  class="table" >
+	<table  class="table table-transparent">
 		<thead>
 			<tr>
 				<th>Cliente</th>
@@ -37,7 +116,7 @@
 				<th>Hora</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody >
 			<tr th:each="cons : ${listadocons}">
             <td th:text="${cons.cliente.nombres}"></td>
             <td th:text="${cons.mascota.nombre_mascota}"></td>
@@ -49,8 +128,8 @@
 
 </div>
 
-<div class="container">
- <h1>Consulta Total Venta Por Dia</h1>
+<div class="container text-center mt-5">
+ <h1 class="titulo">Consulta Total Venta Por Dia</h1>
  
  
  <form th:action="@{/consulta2}" method="get" class="mb-2">
@@ -61,7 +140,7 @@
 
  
  	
-	<table  class="table">
+	<table  class="table table-transparent">
 		<thead>
 			<tr>
 				<th>Fecha del Pago</th>
@@ -80,45 +159,13 @@
  
 </div>
 
+	</div>
 </body>
-<script>
-	/*
-    $(document).ready(function () {
-        $("button.btn-primary").click(function (e) {
-            e.preventDefault(); // Evitar la recarga de la página
-
-            var codVeterinario = $("#codVeterinario").val();
-			var fecha_cita = $("#fecha_cita").val();
-            $.ajax({
-                url: "/listadodecitas",
-                type: "GET",
-                data: { codVeterinario: codVeterinario ,fecha_cita:fecha_cita},
-                success: function (response) {
-
-                    // Actualizar la tabla de historias médicas
-                    var consultTable = $("table tbody");
-                    consultTable.empty(); // Limpiar la tabla
-
-                    if (response.consultascitas.length > 0) {
-                        response.consultascitas.forEach(function (cons) {
-                            consultTable.append("<tr><td>" + cons.cliente.nombres +
-												 "</td><td>" + cons.mascota.nombre_mascota +
-												 "</td><td>" + cons.fecha_cita +
-												 "</td><td>" + cons.hora_cita +
-												 "</td></tr>");
-                        });
-                    } else {
-                        consultTable.append("<tr><td colspan='4'>No se encontraron consultas.</td></tr>");
-                    }
-                },
-  
-            });
-        });
-    });
-    */
+<script src="assets/js/vendor-all.min.js"></script>
+	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/pcoded.min.js"></script>
     
-
-    
-</script>
+	
+	
 
 </html>

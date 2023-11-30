@@ -15,15 +15,11 @@
 	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 	<script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
 	<script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
-	
-	
-
-	
-
 
 	<style>
+		
 	
-	
+		
 		#grupo1 div label ,
 		 #grupo1 div input,
 		 #grupo1 div select{
@@ -90,7 +86,44 @@ background-color: #fff;
 	 	
 
 </head> 
+<style>
+	  body {
+    background-image: url('fondo/fondo.jpg');
+    background-size: contain; /* Ajusta la imagen para que quepa dentro del body sin cortar */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center center; /* Centra la imagen tanto vertical como horizontalmente */
+    height: 100vh; /* Establece la altura del body al 100% del viewport height */
+    margin: 0; /* Elimina el margen por defecto del body */
 
+    align-items: center;
+    justify-content: center;
+}
+label {
+    color: rgb(0, 0, 0); /* Color del texto */
+    font-style: italic; /* Estilo cursiva */
+    font-weight: bold; /* Peso de la fuente */
+    font-family: 'Arial Black', sans-serif; /* Usa Arial Black y, si no está disponible, usa una fuente genérica sans-serif */
+    -webkit-text-stroke: 1px rgb(255, 255, 255); /* Borde negro de 1 píxel para navegadores basados en WebKit (como Chrome y Safari) */
+     font-size: 24px; /* Tamaño del texto en píxeles */
+}
+
+/* Para navegadores que no admiten text-stroke, se recomienda proporcionar una versión de respaldo sin borde */
+@supports not (-webkit-text-stroke: 1px rgb(255, 255, 255)) {
+    label {
+        text-shadow: 1px 1px 1px rgb(255, 255, 255); /* Sombra negra como respaldo */
+    }
+}
+
+h1{
+	 color: rgb(0, 0, 0); /* Color del texto */
+    font-style: italic; /* Estilo cursiva */
+    font-weight: bold; /* Peso de la fuente */
+    font-family: 'Arial Black', sans-serif; /* Usa Arial Black y, si no está disponible, usa una fuente genérica sans-serif */
+    -webkit-text-stroke: 1px rgb(255, 255, 255); /* Borde negro de 1 píxel para navegadores basados en WebKit (como Chrome y Safari) */
+	font-size: 50px;	
+	
+}
+</style>
 <body>
 	
 	
@@ -111,6 +144,8 @@ background-color: #fff;
 	
 	<div class="pcoded-main-container" > 
 		
+		
+		
 		<div class="page-header" style="margin-left: 30px;">
     <div class="page-block">
         <div class="row align-items-center">
@@ -121,7 +156,7 @@ background-color: #fff;
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/inicio"><i class="feather icon-home"></i></a></li>
                     <li class="breadcrumb-item"><a href="javascript:">Mascotas</a></li>
-                    <li class="breadcrumb-item"><a href="javascript:">Citas</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:">Registrar citas</a></li>
                 </ul>
             </div>
         </div>
@@ -129,33 +164,47 @@ background-color: #fff;
 </div>
 		
 		 	
-		<h1 align =center>Formulario de Registro</h1> 
+		<h1 align =center>Regitrar Cita</h1> 
 
-		<form th:action="@{/savecita}" th:object="${cita}" method="post" class="form-control">
-			<div id="grupo1">
-    <div class="form-group row g-3 align-items-center">
-        <label for="inputCliente" class="col-auto col-form-label">Cliente</label>
+		<form th:action="@{/savecita}" th:object="${cita}" method="post" class="form-control" style="background: rgba(255, 255, 255, 0.5);">
+			<div id="grupo1" style="margin-left: 410px;">
+    	<div class="form-group row g-3 align-items-center">
+		<div class="col-auto">	
+        <label for="inputCliente" class="form-label">Cliente</label>
+		</div>
         <div class="col-auto">
             <select id="inputCliente" class="form-control" th:field="*{cliente.codCliente}" name="cod_cliente">
                 <option th:value="-1" th:text="Seleccione"></option>
                 <option th:each="cli : ${listClientes}" th:value="${cli.codCliente}" th:text="${cli.nombres}"></option>
             </select>
         </div>
-        <label for="inputMascota" class="col-auto col-form-label">Mascota</label>
+        <div class="col-auto">
+        <label for="inputMascota" class="form-label">Mascota</label>
+        </div>
         <div class="col-auto">
             <select id="inputMascota" class="form-control" th:field="*{mascota.codMascota}">
                 <option th:value="-1" th:text="Seleccione"></option>
 
             </select>
         </div>
-        <label for="inputVeterinario" class="col-auto col-form-label">Veterinario</label>
+    	</div>
+    	</div>
+			
+			
+			<div id="grupo1" style="margin-left: 410px;">
+				<div class="form-group row g-3 align-items-center">
+        <div class="col-auto">
+        <label for="inputVeterinario" class="form-label">Veterinario</label>
+        </div>
         <div class="col-auto">
 			<select id="inputVet" class="form-control" th:field="*{vet.codVeterinario}">
 				<option th:value="-1" th:text="Seleccione"></option>
 				<option th:each="v : ${listVet}" th:value="${v.codVeterinario}" th:text="${v.nombres_veterinario}"></option>
 			</select>
         </div>
-        <label for="inputServicio" class="col-auto col-form-label">Servicio</label>
+        <div class="col-auto">
+        <label for="inputServicio" class="form-label">Servicio</label>
+        </div>
         <div class="col-auto">
 			<select id="inputVet" class="form-control" th:field="*{servicio.codServicio}">
 				<option th:value="-1" th:text="Seleccione"></option>
@@ -163,34 +212,38 @@ background-color: #fff;
 			</select>
         </div>
     </div>
-</div>
+			</div>
+
+
 
 						
-						<div id="grupo2">
+						<div id="grupo2" style="margin-left: 410px;">
 								<div class="row g-3 align-items-center mt-2">
 							<div class="col-auto">
-								<label for="cod_cliente" class="col-form-label">Fecha cita</label>
+								<label for="cod_cliente" class="form-label">Fecha cita</label>
 							</div>
 							<div class="col-auto">
 								<input type="date" th:field="*{fecha_cita}" id="inputPassword6" class="form-control input-date" placeholder="Select Date"  required>
 							</div>
 							<div class="col-auto">
-								<label for="inputnombre" class="col-form-label">Hora cita</label>
+								<label for="inputnombre" class="form-label">Hora cita</label>
 							</div>
+							
 							<div class="col-auto">
 								<input type="time" th:field="*{hora_cita}" id="cod_mascota" class="form-control input-date" placeholder="Select Time" >					
 							</div>
-							<div class="col-auto">
-								<label for="inputnombre" class="col-form-label">Duracion Estimada</label>
-							</div>
-							<div class="col-auto">
-								<input type="time"  th:field="*{duracion_estimada}" id="cod_mascota" class="form-control input-date"placeholder="Select Time">
 							</div>
 						</div>
 						<div id="grupo1" style="margin-left: 410px;">
 							<div class="form-group row g-3 align-items-center mt-3">
-								<div class="col-auto" style="white-space: nowrap;">
-									<label for="duracion" class="col-form-label">Estado Cita</label>
+						<div class="col-auto">
+								<label for="inputnombre" class="form-label">Duracion Estimada</label>
+							</div>
+							<div class="col-auto">
+								<input type="time"  th:field="*{duracion_estimada}" id="cod_mascota" class="form-control input-date"placeholder="Select Time">
+							</div>
+								<div class="col-auto">
+									<label for="duracion" class="form-label">Estado Cita</label>
 								</div>
 							<div class="col-auto">
 								<select id="inputVet" class="form-control" th:field="*{estado_cita}">
@@ -203,7 +256,7 @@ background-color: #fff;
 						</div>
 						
 					
-						</div>
+						
 						<div id="botones" class="text-center">
 							<button type="submit" class="btn btn-primary">Guardar</button>
 							<a href="/vercita" class="btn btn-warning">Ver Cita</a>

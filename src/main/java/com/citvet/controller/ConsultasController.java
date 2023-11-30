@@ -21,6 +21,9 @@ import com.citvet.model.Veterinario;
 import com.citvet.repository.ICitaRepository;
 import com.citvet.repository.IPagoRepository;
 import com.citvet.repository.IVeterinarioRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
 
 @Controller
 public class ConsultasController {
@@ -36,7 +39,8 @@ public class ConsultasController {
 	
 	@GetMapping("/consultas")
 	public String cargarpag(Model model) {
-		
+		List<Veterinario> listVet = v.findAll();
+		model.addAttribute("listVet",listVet);
 		
 		return "consultascitas";
 	}
@@ -45,11 +49,12 @@ public class ConsultasController {
 	public String listadodecitas(@RequestParam("codVeterinario")Integer codigo,
 							@RequestParam("fecha_cita")@DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha,Model model){
 		
-
-		    	
+		List<Veterinario> listVet = v.findAll();
+		
 		
 		List<Cita> cons = c.listConsulta(codigo, fecha);
-
+		
+		
 	    for (Cita consulta : cons) {
 	        System.out.println("Cliente : " + consulta.getCliente().getNombres());
 	        System.out.println("Mascota : " + consulta.getMascota().getNombre_mascota());
@@ -59,17 +64,19 @@ public class ConsultasController {
 	    }
 	    
 	    model.addAttribute("listadocons", cons);
-	
+	    model.addAttribute("listVet",listVet);
+	 	
 	    return "consultascitas";
 	    	
 		
 	}
 	
 	
-	
 	@GetMapping("/consulta2")
 	public String  listadostotal(Model model, @RequestParam("fecha") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha) {
 	    
+		List<Veterinario> listVet = v.findAll();
+		
 	    List<Object[]> cons2 = p.constotal(fecha);
 
 	    for (Object[] resultado : cons2) {
@@ -81,7 +88,7 @@ public class ConsultasController {
 	    }
 	    
 	    model.addAttribute("consultas", cons2);
-		
+	    model.addAttribute("listVet",listVet);
 	    
 	    return "consultascitas";
 	}
