@@ -39,7 +39,7 @@
 					    				<th scope="col">Apellidos</th>
 					    				<th scope="col">Dni</th>
 					    				<th scope="col">Distrito</th>
-					    				<th scope="col">Direcciòn</th>
+					    				<th scope="col">Dirección</th>
 					    				<th scope="col">Telefono</th>
 					    				<th scope="col">Correo</th>
 					    				<th></th>
@@ -51,13 +51,14 @@
 								        <td th:text="${c.codCliente}" class="text-center align-middle"></td>
 								        <td th:text="${c.nombres}" class="align-middle"></td>
 								        <td th:text="${c.apellidos}" class="align-middle"></td>
-								        <td th:text="${c.dni}" class="align-middle"></td>
+								        <td th:text="${c.dni}" class="align-middle"></td>		
+								        <td th:text="${c.distrito.codDistrito}" class="d-none"></td>						       
 								        <td th:text="${c.distrito.nom_distrito}" class="align-middle"></td>
 								        <td th:text="${c.direccion}" class="align-middle"></td>
 								        <td th:text="${c.telefono}" class="align-middle"></td>
 								        <td th:text="${c.correo}" class="align-middle"></td>
 								        <td class="align-middle">
-											<button class="btn btn-primary" th:onclick="'editarCliente(' + ${c.codCliente} + ')'" >Editar</button>
+											<button type="button" class="btn btn-primary editbtn">Editar</button>
 					    				</td>
 					    				<td class="align-middle"> 
 						                    <button type="button" class="btn btn-danger deletebtn">Eliminar</button>
@@ -99,22 +100,59 @@
 </div>
 <!-- Fin del Modal -->
 
+<!-- Inicio del Modal Actualizar-->
+<div class="modal fade" id="modal_editar_cliente" tabindex="-1" aria-labelledby="editarModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Editar Cliente</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<form th:action="@{/actualizarCliente}" method="post">
+				<div class="modal-body">
+					<input type="hidden" name="codCliente" id="codigo_cliente_edit">
+					<div class="mb-3">
+						<label for="nombre_cliente_edit" class="form-label">Nombres:</label>
+						<input type="text" class="form-control" name="nombres" id="nombre_cliente_edit">
+					</div>
+					<div class="mb-3">
+						<label for="apellidos_cliente_edit" class="form-label">Apellidos:</label>
+						<input type="text" class="form-control" name="apellidos" id="apellidos_cliente_edit">
+					</div>
+					<div class="mb-3">
+						<label for="dni_cliente_edit" class="form-label">DNI:</label>
+						<input type="text" class="form-control" name="dni" id="dni_cliente_edit">
+					</div>
 
-<script>
-	// Boton eliminar cliente
-	$(document).ready(function(){
-		$('.deletebtn').on('click',function(){
-			$('#modal_eliminar_cliente').modal('show');
-			$tr = $(this).closest('tr');
-			var data = $tr.children("td").map(function(){
-				return $(this).text();
-			}).get();
-			console.log(data);
-			$('#codigo_cliente').val(data[0]);
-			$('#nombre_cliente').text("¿Está seguro de eliminar al cliente: "+ data[1]+"?");
-		})
-	});
-</script>
+                    <div class="mb-3">
+						<label for="telefono_cliente_edit" class="form-label">Distrito:</label>
+						<select id="distrito_cliente_edit" class="form-control" name="distrito">
+						</select>			
+					</div>
+
+
+					<div class="mb-3">
+						<label for="direccion_cliente_edit" class="form-label">Dirección:</label>
+						<input type="text" class="form-control" name="direccion" id="direccion_cliente_edit">
+					</div>
+					<div class="mb-3">
+						<label for="telefono_cliente_edit" class="form-label">Teléfono:</label>
+						<input type="text" class="form-control" name="telefono" id="telefono_cliente_edit">
+					</div>
+					<div class="mb-3">
+						<label for="email_cliente_edit" class="form-label">Correo:</label>
+						<input type="text" class="form-control" name="correo" id="email_cliente_edit">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+					<button type="submit" name="editdata" class="btn btn-primary">Sí, editar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
 
 <!-- Hoverable rows end -->
 </div>

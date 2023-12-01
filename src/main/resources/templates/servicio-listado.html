@@ -97,22 +97,5 @@
 </div>
 <!-- Fin del Modal -->
 
-
-<script>
-	// Boton eliminar servicio
-	$(document).ready(function(){
-		$('.deletebtn').on('click',function(){
-			$('#modal_eliminar_servicio').modal('show');
-			$tr = $(this).closest('tr');
-			var data = $tr.children("td").map(function(){
-				return $(this).text();
-			}).get();
-			console.log(data);
-			$('#codigo_servicio').val(data[0]);
-			$('#nombre_servicio').text("¿Está seguro de eliminar el servicio: "+ data[1]+"?");
-		})
-	});
-</script>
-
 <!-- Hoverable rows end -->
 </div>

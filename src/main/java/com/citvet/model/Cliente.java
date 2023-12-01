@@ -26,7 +26,7 @@ public class Cliente {
 
     @ManyToOne
 	@JoinColumn(name="cod_distrito")
-	Distrito distrito;
+	private Distrito distrito;
     
     @Column(name = "direccion")
     private String direccion;
@@ -39,22 +39,19 @@ public class Cliente {
 
     @Column(name = "estado")
     private String estado;
-    
 
-  
     // getters y setters
     
-
-	public String getNombres() {
-		return nombres;
-	}
-
 	public int getCodCliente() {
 		return codCliente;
 	}
 
 	public void setCodCliente(int codCliente) {
 		this.codCliente = codCliente;
+	}
+
+	public String getNombres() {
+		return nombres;
 	}
 
 	public void setNombres(String nombres) {
@@ -116,5 +113,8 @@ public class Cliente {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
+    
+
+	
 	    
 }
