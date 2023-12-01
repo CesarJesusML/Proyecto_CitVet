@@ -82,26 +82,17 @@ public class MascotaController {
 	    return "redirect:/mascota-listado";
 	}
 	
-	@GetMapping("/editar/{codMascota}")
-	public String editarPag(@PathVariable int codMascota, Model model) {
-	    model.addAttribute("mascota", mascrepo.findByCodMascota(codMascota));
-	    model.addAttribute("lstEspecies", espe.findAll());
-	    model.addAttribute("lstRazas", raza.findAll());
-	    return "editarMascota :: modalContent";  // Devuelve solo la parte del modal, no toda la página
+	@PostMapping("/actualizarMascota")
+	public String actualizarMascotas(@ModelAttribute Mascota mascota, RedirectAttributes attribute) {
+	    if(mascrepo.save(mascota) != null) {
+	        attribute.addFlashAttribute("success", "Mascota actualizada con éxito!");
+	    } else {
+	        attribute.addFlashAttribute("unsuccess", "Error al actualizar la mascota!");
+	    }
+	    return "redirect:/mascota-listado";
 	}
 
-	@PostMapping("/actualizar")
-	public String actualizarPag(@ModelAttribute Mascota mascota, RedirectAttributes attribute, Model model) {
-	    if (mascrepo.save(mascota) != null) {
-	        attribute.addFlashAttribute("sucess", "Actualizado con éxito!");
-	    } else {
-	        attribute.addFlashAttribute("unsucess", "Error actualizando!");
-	    }
-	    model.addAttribute("mascota", mascota);
-	    model.addAttribute("lstMascotas", mascrepo.findAll());  
-	    model.addAttribute("content", "mascota-listado");  
-	    return "layout";
-	}
+
 
 	@PostMapping("/eliminar")
 	public String eliminarPag(@ModelAttribute Mascota mascota, RedirectAttributes attribute) {

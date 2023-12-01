@@ -48,6 +48,16 @@ public class ServicioController {
 		return "redirect:/servicio-listado";
 	}
 	
+	@PostMapping("/actualizarServicio")
+	public String actualizarServicios(@ModelAttribute Servicio servicio, RedirectAttributes attribute) {
+	    if(serrepo.save(servicio) != null) {
+	        attribute.addFlashAttribute("success", "Servicio actualizado con éxito!");
+	    } else {
+	        attribute.addFlashAttribute("unsuccess", "Error al actualizar el servicio!");
+	    }
+	    return "redirect:/servicio-listado";
+	}
+
 	@PostMapping("/eliminarServicio")
 	public String eliminarPag(@ModelAttribute Servicio servicio, RedirectAttributes attribute) {
 		Servicio servicioToDelete = serrepo.findByCodServicio(servicio.getCodServicio());

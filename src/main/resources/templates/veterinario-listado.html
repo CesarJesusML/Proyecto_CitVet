@@ -50,11 +50,13 @@
                                         <td th:text="${v.nombres_veterinario}" class="align-middle"></td>
                                         <td th:text="${v.apellidos_veterinario}" class="align-middle"></td>
                                         <td th:text="${v.dni}" class="align-middle"></td>
+                                        <td th:text="${v.distrito.codDistrito}" class="d-none"></td>
                                         <td th:text="${v.distrito.nom_distrito}" class="align-middle"></td>
                                         <td th:text="${v.direccion}" class="align-middle"></td>
                                         <td th:text="${v.especialidad}" class="align-middle"></td>
+                                        <td th:text="${v.estado}" class="d-none"></td>
                                         <td class="align-middle">
-                                            <button class="btn btn-primary" th:onclick="'editarVeterinario(' + ${v.codVeterinario} + ')'" >Editar</button>
+                                            <button type="button" class="btn btn-primary btn_editar_veterinario">Editar</button>
                                         </td>
                                         <td class="align-middle"> 
                                             <button type="button" class="btn btn-danger deletebtn">Eliminar</button>
@@ -70,6 +72,59 @@
         </div>       
     </div>
 </div>
+
+<!-- Inicio del Modal Actualizar-->
+<div class="modal fade" id="modal_editar_veterinario" tabindex="-1" aria-labelledby="editarModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Editar Veterinario</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<form th:action="@{/actualizarVeterinario}" method="post">
+				<div class="modal-body">
+					<input type="hidden" name="codVeterinario" id="codigo_veterinario_edit">
+					<div class="mb-3">
+						<label for="nombre_veterinario_edit" class="form-label">Nombres:</label>
+						<input type="text" class="form-control" name="nombres_veterinario" id="nombre_veterinario_edit">
+					</div>
+					<div class="mb-3">
+						<label for="apellidos_veterinario_edit" class="form-label">Apellidos:</label>
+						<input type="text" class="form-control" name="apellidos_veterinario" id="apellidos_veterinario_edit">
+					</div>
+					<div class="mb-3">
+						<label for="dni_veterinario_edit" class="form-label">DNI:</label>
+						<input type="text" class="form-control" name="dni" id="dni_veterinario_edit">
+					</div>
+
+                    <div class="mb-3">
+						<label for="distrito_veterinario_edit" class="form-label">Distrito:</label>
+						<select id="distrito_veterinario_edit" class="form-control" name="distrito">
+						</select>			
+					</div>
+
+					<div class="mb-3">
+						<label for="direccion_veterinario_edit" class="form-label">Dirección:</label>
+						<input type="text" class="form-control" name="direccion" id="direccion_veterinario_edit">
+					</div>
+					<div class="mb-3">
+						<label for="especialidad_veterinario_edit" class="form-label">Especialidad:</label>
+						<input type="text" class="form-control" name="especialidad" id="especialidad_veterinario_edit">
+					</div>
+					<input type="hidden" name="estado" id="estado_veterinario_edit">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+					<button type="submit" name="editdata" class="btn btn-primary">Sí, editar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!-- Fin del Modal -->
+
+
 
 <!-- Inicio del Modal -->
 <div class="modal fade" id="modal_eliminar_veterinario" tabindex="-1" aria-labelledby="eliminarModalLabel" aria-hidden="true">

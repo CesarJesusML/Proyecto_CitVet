@@ -57,8 +57,9 @@
 								        <td th:text="${c.direccion}" class="align-middle"></td>
 								        <td th:text="${c.telefono}" class="align-middle"></td>
 								        <td th:text="${c.correo}" class="align-middle"></td>
+								        <td th:text="${c.estado}" class="d-none"></td>
 								        <td class="align-middle">
-											<button type="button" class="btn btn-primary editbtn">Editar</button>
+											<button type="button" class="btn btn-primary btn_editar_cliente">Editar</button>
 					    				</td>
 					    				<td class="align-middle"> 
 						                    <button type="button" class="btn btn-danger deletebtn">Eliminar</button>
@@ -126,11 +127,10 @@
 					</div>
 
                     <div class="mb-3">
-						<label for="telefono_cliente_edit" class="form-label">Distrito:</label>
+						<label for="distrito_cliente_edit" class="form-label">Distrito:</label>
 						<select id="distrito_cliente_edit" class="form-control" name="distrito">
 						</select>			
 					</div>
-
 
 					<div class="mb-3">
 						<label for="direccion_cliente_edit" class="form-label">Dirección:</label>
@@ -144,6 +144,7 @@
 						<label for="email_cliente_edit" class="form-label">Correo:</label>
 						<input type="text" class="form-control" name="correo" id="email_cliente_edit">
 					</div>
+					<input type="hidden" name="estado" id="estado_cliente_edit">
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

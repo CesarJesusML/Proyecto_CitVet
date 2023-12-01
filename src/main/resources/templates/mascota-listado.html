@@ -54,18 +54,24 @@
 										    <img th:src="@{'/imagenes/mascotas/' + ${m.foto_mascota}}" alt="Foto" class="img-thumbnail" style="width: 70px;" />
 										</td>
 								        <td th:text="${m.nombre_mascota}" class="align-middle"></td>
+								        <td th:text="${m.especie.codEspecie}" class="d-none"></td>	
 								        <td th:text="${m.especie.nombre_especie}" class="align-middle"></td>
+								        <td th:text="${m.raza.codRaza}" class="d-none"></td>	
 								        <td th:text="${m.raza.nombre_raza}" class="align-middle"></td>
 								        <td th:text="${m.sexo}" class="align-middle"></td>
 								        <td th:text="${#dates.format(m.fecha_nacimiento, 'dd-MM-yyyy')}" class="text-center align-middle"></td>
 								        <td th:text="${m.peso}" class="align-middle"></td>
+								        <td th:text="${m.cliente.codCliente}" class="d-none"></td>
+								        <td th:text="${m.chip_identificacion}" class="d-none"></td>	
+								        <td th:text="${m.color}" class="d-none"></td>	
+								        <td th:text="${m.estado}" class="d-none"></td>	
 								        <td th:text="${m.cliente.nombres + ' ' + m.cliente.apellidos}" class="align-middle"></td>
 								        <td class="align-middle">
-											<button class="btn btn-primary" th:onclick="'editarMascota(' + ${m.codMascota} + ')'" >Editar</button>
+											<button type="button" class="btn btn-primary btn_editar_mascota">Editar</button>
 					    				</td>
 					    				<td class="align-middle"> 
 											<button type="button" class="btn btn-danger deletebtn">Eliminar</button>
-					    				</td>
+					    				</td>					    				
 								    </tr>
 								</tbody>
                             </table>
@@ -78,6 +84,62 @@
         </div>       
     </div>
 </div>
+
+<!-- Inicio del Modal Actualizar-->
+<div class="modal fade" id="modal_editar_mascota" tabindex="-1" aria-labelledby="editarModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Editar Mascota</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<form th:action="@{/actualizarMascota}" method="post">
+				<div class="modal-body">
+					<input type="hidden" name="codMascota" id="codigo_mascota_edit">
+					<div class="mb-3">
+						<label for="nombre_mascota_edit" class="form-label">Nombre:</label>
+						<input type="text" class="form-control" name="nombre_mascota" id="nombre_mascota_edit">
+					</div>
+					<input type="hidden" name="chip_identificacion" id="chip_identificacion_mascota_edit">
+					<div class="mb-3">
+						<label for="especie_mascota_edit" class="form-label">Especie:</label>
+						<select id="especie_mascota_edit" class="form-control" name="especie">
+						</select>			
+					</div>
+                    <div class="mb-3">
+						<label for="raza_mascota_edit" class="form-label">Raza:</label>
+						<select id="raza_mascota_edit" class="form-control" name="raza">
+						</select>			
+					</div>
+					<input type="hidden" name="color" id="color_mascota_edit">
+                    <div class="mb-3">
+						<label for="sexo_mascota_edit" class="form-label">Sexo:</label>
+						<input type="text" class="form-control" name="sexo" id="sexo_mascota_edit">
+					</div>
+                    <div class="mb-3">
+						<label for="fecha_nacimiento_mascota_edit" class="form-label">Fecha de Nacimiento:</label>
+						<input type="date" class="form-control" name="fecha_nacimiento" id="fecha_nacimiento_mascota_edit">
+					</div>
+                    <div class="mb-3">
+						<label for="peso_mascota_edit" class="form-label">Peso:</label>
+						<input type="text" class="form-control" name="peso" id="peso_mascota_edit">
+					</div>
+					<input type="hidden" name="cliente" id="cliente_mascota_edit">
+					<input type="hidden" name="estado" id="estado_mascota_edit">
+					<input type="hidden" id="foto_mascota_edit" name="foto_mascota">
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+					<button type="submit" name="editdata" class="btn btn-primary">Sí, editar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!-- Fin del Modal -->
+
 
 
 <!-- Inicio del Modal -->

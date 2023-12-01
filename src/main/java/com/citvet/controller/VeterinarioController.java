@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.citvet.model.Cliente;
 import com.citvet.model.Veterinario;
 import com.citvet.repository.IVeterinarioRepository;
 import com.citvet.repository.IDistritoRepository;
@@ -47,6 +48,16 @@ public class VeterinarioController {
 		}
 		return "redirect:/veterinario-listado";
 	}
+	
+	@PostMapping("/actualizarVeterinario")
+    public String actualizarVeterinarios(@ModelAttribute Veterinario veterinario, RedirectAttributes attribute) {
+        if(vetrepo.save(veterinario) != null) {
+            attribute.addFlashAttribute("success", "Veterinario actualizado con éxito!");
+        } else {
+            attribute.addFlashAttribute("unsuccess", "Error al actualizar el veterinario!");
+        }
+        return "redirect:/veterinario-listado";
+    }
 	
 	@PostMapping("/eliminarVeterinario")
 	public String eliminarPag(@ModelAttribute Veterinario veterinario, RedirectAttributes attribute) {

@@ -27,8 +27,6 @@ public class ClienteController {
 	public String listadoClientes(Model model) {
 	    model.addAttribute("content", "cliente-listado");      
 	    model.addAttribute("lstClientes", clirepo.findAll());
-	    model.addAttribute("lstDistritos", disrepo.findAll());
-	    model.addAttribute("cliente", new Cliente()); // Añade esta línea
 	    return "layout";
 	}
 
