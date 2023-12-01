@@ -38,8 +38,8 @@
 										<th scope="col">Nombre</th>
 					    				<th scope="col">Descripción</th>
 					    				<th scope="col">Tipo de Servicio</th>
-					    				<th scope="col">Precio</th>
-					    				<th scope="col">Duración Estimada</th>
+					    				<th scope="col" class="text-center">Precio</th>
+					    				<th scope="col" class="text-center">Duración (minutos)</th>
 					    				<th></th>
 					    				<th></th>
 					    			</tr>
@@ -51,12 +51,12 @@
 								        <td th:text="${s.descripcion}" class="align-middle"></td>
 								        <td th:text="${s.tipoServicio.codTipoServicio}" class="d-none"></td>
 								        <td th:text="${s.tipoServicio.descripcion_tipo}" class="align-middle"></td>
-								        <td th:text="${s.precio}" class="align-middle"></td>
-								        <td th:text="${s.duracion_estimada}" class="align-middle"></td>
+								        <td th:text="${s.precio}" class="align-middle text-center"></td>
+								        <td th:text="${s.duracion_estimada}" class="align-middle text-center"></td>
 								        <td th:text="${s.materiales_necesarios}" class="d-none"></td>
 								        <td th:text="${s.estado}" class="d-none"></td>
 								        <td class="align-middle">
-											<button type="button" class="btn btn-primary btn_editar_servicio">Editar</button>
+											<button type="button" class="btn btn-warning btn_editar_servicio">Editar</button>
 					    				</td>
 					    				<td class="align-middle"> 
 						                    <button type="button" class="btn btn-danger deletebtn">Eliminar</button>

@@ -83,8 +83,8 @@
 									<label for="inputEstado">Sexo</label>
 									<select id="inputEstado" class="form-control" th:field="*{sexo}">
 										<option th:value="-1" th:text="Seleccione"></option>
-										<option th:value="1" th:text="Hembra"></option>
-										<option th:value="2" th:text="Macho"></option>
+										<option th:value="Hembra" th:text="Hembra"></option>
+										<option th:value="Macho" th:text="Macho"></option>
 									</select>
 								</div>
 								<div class="form-group col-md-3">
@@ -104,7 +104,7 @@
 								</div>
 							</div>
 							<button type="submit" class="btn btn-primary">Registrar</button>
-							<a href="/mascota-listado" class="btn btn-primary">Listar</a>
+							<a href="/mascota-listado" class="btn btn-warning">Listar</a>
 						</div>
 					</form>
 			    </div>
